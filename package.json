@@ -14,7 +14,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "changelog": "git cliff --config cliff.toml -o CHANGELOG.md"
+    "changelog": ".\\.tools\\git-cliff-2.9.0\\git-cliff.exe --config cliff.toml -o CHANGELOG.md"
   },
   "dependencies": {
     "react": "^19.1.0",
