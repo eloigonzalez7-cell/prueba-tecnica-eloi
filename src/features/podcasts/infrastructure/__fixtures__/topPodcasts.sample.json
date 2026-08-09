@@ -1,0 +1,26 @@
+{
+  "feed": {
+    "entry": [
+      {
+        "id": { "attributes": { "im:id": "1535809341" } },
+        "im:name": { "label": "The Joe Budden Podcast" },
+        "im:artist": { "label": "The Joe Budden Network" },
+        "im:image": [
+          {
+            "label": "https://example.com/55.jpg",
+            "attributes": { "height": "55" }
+          },
+          {
+            "label": "https://example.com/60.jpg",
+            "attributes": { "height": "60" }
+          },
+          {
+            "label": "https://example.com/170.jpg",
+            "attributes": { "height": "170" }
+          }
+        ],
+        "summary": { "label": "Tune into Joe Budden" }
+      }
+    ]
+  }
+}
