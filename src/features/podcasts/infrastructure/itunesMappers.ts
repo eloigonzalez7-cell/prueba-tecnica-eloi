@@ -12,7 +12,7 @@ type TopPodcastEntry = {
   summary?: LabelNode;
 };
 
-type TopPodcastsFeed = {
+export type TopPodcastsFeed = {
   feed?: {
     entry?: TopPodcastEntry | TopPodcastEntry[];
   };
@@ -36,7 +36,7 @@ type LookupResult = {
   previewUrl?: string;
 };
 
-type LookupResponse = {
+export type LookupResponse = {
   results?: LookupResult[];
 };
 
