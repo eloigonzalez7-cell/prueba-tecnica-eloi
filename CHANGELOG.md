@@ -3,11 +3,16 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
-## [Unreleased]
+## [0.1.0-foundation] - 2026-08-09
 
 ### CI
 
 - add lint test build workflow
+- add git-cliff changelog workflow
+
+### Documentation
+
+- add backlog and estimations
 
 ### Features
 
