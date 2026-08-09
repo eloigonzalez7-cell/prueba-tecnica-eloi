@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+build/
+*.tsbuildinfo
+
+# Test / coverage
+coverage/
+cypress/videos/
+cypress/screenshots/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs / debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Local tooling caches
+.cache/
+.eslintcache
+*.local
+
+# Challenge brief (keep local only)
+*.pdf
