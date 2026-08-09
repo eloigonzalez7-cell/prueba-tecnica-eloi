@@ -3,6 +3,18 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [0.2.0-domain] - 2026-08-09
+
+### Bug Fixes
+
+- point changelog script to local git-cliff binary
+
+### Features
+
+- **podcasts:** add domain models
+- **podcasts:** add repository ports
+- **podcasts:** add 24h local storage cache
+- **podcasts:** add filter podcasts use case
 ## [0.1.0-foundation] - 2026-08-09
 
 ### CI
