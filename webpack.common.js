@@ -17,7 +17,15 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: {
+          loader: "ts-loader",
+          options: {
+            // tsconfig keeps noEmit for IDE/tsc; webpack must emit JS
+            compilerOptions: {
+              noEmit: false,
+            },
+          },
+        },
         exclude: /node_modules/,
       },
       {
