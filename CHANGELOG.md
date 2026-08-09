@@ -1,0 +1,33 @@
+# Changelog
+
+All notable changes to Podcaster are documented here.
+Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
+
+## [Unreleased]
+
+### CI
+
+- add lint test build workflow
+
+### Features
+
+- **app:** bootstrap react entrypoint
+- **app:** add clean url router shell
+
+### Miscellaneous
+
+- add package manifest and engines
+- add strict typescript config
+- add webpack common config
+- add webpack dev and prod configs
+- add eslint flat config
+
+### Testing
+
+- add jest and smoke test
+## [0.0.0-init] - 2026-08-09
+
+### Documentation
+
+- add readme and gitignore
+
