@@ -1,0 +1,21 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding: var(--space-8);
+}
+
+.title {
+  margin: 0 0 var(--space-2);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--color-text-muted);
+}
