@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "wrapperType": "track",
+      "kind": "podcast",
+      "collectionId": 1535809341,
+      "collectionName": "The Joe Budden Podcast",
+      "artistName": "The Joe Budden Network",
+      "artworkUrl60": "https://example.com/60.jpg",
+      "artworkUrl100": "https://example.com/100.jpg",
+      "artworkUrl600": "https://example.com/600.jpg",
+      "description": "Collection description"
+    },
+    {
+      "wrapperType": "podcastEpisode",
+      "kind": "podcastEpisode",
+      "trackId": 1000000001,
+      "trackName": "Episode 1",
+      "description": "<p>Hello</p>",
+      "releaseDate": "2024-01-15T10:00:00Z",
+      "trackTimeMillis": 3600000,
+      "episodeUrl": "https://example.com/ep1.mp3"
+    },
+    {
+      "wrapperType": "podcastEpisode",
+      "kind": "podcastEpisode",
+      "trackId": 1000000002,
+      "trackName": "Episode 2",
+      "description": "Second",
+      "releaseDate": "2024-01-22T10:00:00Z",
+      "trackTimeMillis": 1800000,
+      "episodeUrl": "https://example.com/ep2.mp3"
+    }
+  ]
+}
