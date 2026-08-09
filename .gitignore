@@ -33,6 +33,8 @@ Thumbs.db
 .cache/
 .eslintcache
 *.local
+.tools/
 
 # Challenge brief (keep local only)
 *.pdf
+.cursor/
