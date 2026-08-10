@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml/badge.svg)](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml)
 
+**Current release:** [`v1.2.0`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.2.0) — see [CHANGELOG.md](CHANGELOG.md).
+
 Single-page application to browse Apple’s top music podcasts, open podcast details, and play episodes. Built for the **Inditex frontend technical challenge**.
 
 ## Requirements
@@ -68,12 +70,13 @@ Specs use custom commands (`cy.stubItunesApis`) and fixtures under `cypress/fixt
 
 - **Home** `/` — top 100 podcasts, live filter by title/author, count badge, 24h `localStorage` cache
 - **Podcast** `/podcast/:podcastId` — sidebar + episodes table, 24h cache; empty lookup description enriched from top-feed summary (enriched snapshot written back to cache)
-- **Episode** `/podcast/:podcastId/episode/:episodeId` — DOMPurify-sanitized HTML description + `<audio controls>` (lookup `limit=20` matches the brief sample URL)
+- **Episode** `/podcast/:podcastId/episode/:episodeId` — DOMPurify-sanitized HTML, bare `https://` / `domain/path` URLs linkified, newlines preserved, plus `<audio controls>` (lookup `limit=20` matches the brief sample URL)
 - **Chrome** — “Podcaster” header link → home; top-right loading spinner while fetching
 - Route-level **code splitting** (`React.lazy`) for the three pages
 - Visible **error + Retry** on failed loads (also logged to the console)
 - Clean URLs (React Router, no hash routing)
 - Semantic HTML + CSS Modules (native CSS only)
+- **Cypress e2e** — structured suite (`home`, `navigation`, `podcast-flow`, `cache`) with custom commands; `smoke` re-runs the same suite against prod
 
 ## Architecture
 
@@ -126,6 +129,15 @@ Rules of thumb:
 ## Milestone tags
 
 `v0.0.0-init` → `v0.1.0-foundation` → `v0.2.0-domain` → `v0.2.1-data` → `v0.3.0-home` → `v0.4.0-detail` → `v0.5.0-episode` → `v0.6.0-chrome` → `v0.7.0-tests` → `v1.0.0` → `v1.1.0` → `v1.2.0`
+
+### Release checklist
+
+Before tagging a new version, update **all** of:
+
+1. `CHANGELOG.md` (git-cliff / Conventional Commits)
+2. **This README** — `Current release`, Features (if behaviour changed), Milestone tags
+3. `docs/REQUIREMENTS.md` + `docs/BACKLOG.md` delivery tag notes
+4. Commit with `chore(release): sync changelog for vX.Y.Z` (skipped by git-cliff), then tag `vX.Y.Z`
 
 ## License
 
