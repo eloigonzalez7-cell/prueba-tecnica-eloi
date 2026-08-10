@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import type { Podcast } from "../domain/Podcast";
+import type { Podcast } from "@/features/podcasts/domain/Podcast";
 import styles from "./HomePage.module.css";
-import { getTopPodcasts } from "./podcastDependencies";
+import { filterPodcasts, getTopPodcasts } from "./podcastDependencies";
 
 export function HomePage() {
   const [podcasts, setPodcasts] = useState<Podcast[]>([]);
+  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,28 +36,55 @@ export function HomePage() {
     };
   }, []);
 
+  const visiblePodcasts = filterPodcasts.execute(podcasts, query);
+
   return (
     <section className={styles.page}>
-      <h1 className={styles.title}>Podcaster</h1>
+      <header className={styles.toolbar}>
+        <h1 className={styles.title}>Podcaster</h1>
+        <form
+          className={styles.searchForm}
+          role="search"
+          onSubmit={(event) => event.preventDefault()}
+        >
+          <label className={styles.filterLabel} htmlFor="podcast-filter">
+            Filter podcasts by title or author
+          </label>
+          <input
+            id="podcast-filter"
+            className={styles.filterInput}
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Filter by title or author"
+            disabled={loading}
+          />
+          <output className={styles.badge} htmlFor="podcast-filter">
+            {loading ? "…" : visiblePodcasts.length}
+          </output>
+        </form>
+      </header>
 
       {loading ? (
         <>
           <p className={styles.status}>Loading podcasts…</p>
-          <div className={styles.skeletonGrid} aria-hidden="true">
+          <ul className={styles.skeletonGrid} aria-hidden="true">
             {Array.from({ length: 8 }, (_, index) => (
-              <div key={index} className={styles.skeletonCard}>
-                <div className={styles.skeletonCover} />
-                <div className={styles.skeletonLine} />
-                <div className={styles.skeletonLine} />
-              </div>
+              <li key={index} className={styles.skeletonCard}>
+                <span className={styles.skeletonCover} />
+                <span className={styles.skeletonLine} />
+                <span className={styles.skeletonLine} />
+              </li>
             ))}
-          </div>
+          </ul>
         </>
       ) : (
         <>
-          <p className={styles.status}>{podcasts.length} podcasts</p>
+          <p className={styles.status}>
+            {visiblePodcasts.length} of {podcasts.length} podcasts
+          </p>
           <ul className={styles.grid}>
-            {podcasts.map((podcast) => (
+            {visiblePodcasts.map((podcast) => (
               <li key={podcast.id}>
                 <Link
                   className={styles.card}
@@ -85,7 +113,7 @@ export function HomePage() {
                     width={120}
                     height={120}
                   />
-                  <p className={styles.name}>{podcast.title}</p>
+                  <h2 className={styles.name}>{podcast.title}</h2>
                   <p className={styles.author}>{podcast.author}</p>
                 </Link>
               </li>
