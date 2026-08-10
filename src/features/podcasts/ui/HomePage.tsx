@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSyncAppLoading } from "@/app/loading/AppLoadingContext";
 import type { Podcast } from "@/features/podcasts/domain/Podcast";
 import { filterPodcasts, getTopPodcasts } from "@/features/podcasts/ui/podcastDependencies";
 import styles from "@/features/podcasts/ui/HomePage.module.css";
@@ -8,6 +9,7 @@ export function HomePage() {
   const [podcasts, setPodcasts] = useState<Podcast[]>([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(true);
+  useSyncAppLoading(loading);
 
   useEffect(() => {
     const controller = new AbortController();
