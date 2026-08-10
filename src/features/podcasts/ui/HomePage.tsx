@@ -40,8 +40,8 @@ export function HomePage() {
 
   return (
     <section className={styles.page}>
+      <h1 className={styles.srOnly}>Top podcasts</h1>
       <header className={styles.toolbar}>
-        <h1 className={styles.title}>Podcaster</h1>
         <form
           className={styles.searchForm}
           role="search"
