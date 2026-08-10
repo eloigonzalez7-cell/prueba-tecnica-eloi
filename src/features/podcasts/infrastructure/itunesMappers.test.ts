@@ -1,6 +1,6 @@
-import podcastLookup from "./__fixtures__/podcastLookup.sample.json";
-import topPodcasts from "./__fixtures__/topPodcasts.sample.json";
-import { mapPodcastDetail, mapTopPodcasts } from "./itunesMappers";
+import { mapPodcastDetail, mapTopPodcasts } from "@/features/podcasts/infrastructure/itunesMappers";
+import podcastLookup from "@/features/podcasts/infrastructure/__fixtures__/podcastLookup.sample.json";
+import topPodcasts from "@/features/podcasts/infrastructure/__fixtures__/topPodcasts.sample.json";
 
 describe("mapTopPodcasts", () => {
   it("maps feed entries to Podcast entities with multi-size images", () => {

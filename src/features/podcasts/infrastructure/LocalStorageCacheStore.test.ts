@@ -1,5 +1,5 @@
-import { ONE_DAY_MS } from "./cacheTtl";
-import { LocalStorageCacheStore } from "./LocalStorageCacheStore";
+import { ONE_DAY_MS } from "@/features/podcasts/infrastructure/cacheTtl";
+import { LocalStorageCacheStore } from "@/features/podcasts/infrastructure/LocalStorageCacheStore";
 
 class MemoryStorage implements Storage {
   private readonly data = new Map<string, string>();

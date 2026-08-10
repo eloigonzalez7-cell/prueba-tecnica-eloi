@@ -1,20 +1,23 @@
-import { toCorsSafeUrl } from "../../../shared/http/corsProxy";
-import {
-  fetchJson,
-  type FetchJsonOptions,
-} from "../../../shared/http/fetchJson";
+import type { Podcast } from "@/features/podcasts/domain/Podcast";
 import type {
   PodcastDetail,
   PodcastRepository,
-} from "../domain/PodcastRepository";
-import type { Podcast } from "../domain/Podcast";
+} from "@/features/podcasts/domain/PodcastRepository";
 import {
   mapPodcastDetail,
   mapTopPodcasts,
   type LookupResponse,
   type TopPodcastsFeed,
-} from "./itunesMappers";
-import { podcastLookupUrl, TOP_PODCASTS_URL } from "./itunesUrls";
+} from "@/features/podcasts/infrastructure/itunesMappers";
+import {
+  podcastLookupUrl,
+  TOP_PODCASTS_URL,
+} from "@/features/podcasts/infrastructure/itunesUrls";
+import { toCorsSafeUrl } from "@/shared/http/corsProxy";
+import {
+  fetchJson,
+  type FetchJsonOptions,
+} from "@/shared/http/fetchJson";
 
 type FetchJsonFn = <T>(
   url: string,

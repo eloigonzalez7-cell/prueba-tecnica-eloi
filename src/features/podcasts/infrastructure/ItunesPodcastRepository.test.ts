@@ -1,7 +1,7 @@
-import podcastLookup from "./__fixtures__/podcastLookup.sample.json";
-import topPodcasts from "./__fixtures__/topPodcasts.sample.json";
-import { ItunesPodcastRepository } from "./ItunesPodcastRepository";
-import { TOP_PODCASTS_URL } from "./itunesUrls";
+import { ItunesPodcastRepository } from "@/features/podcasts/infrastructure/ItunesPodcastRepository";
+import { TOP_PODCASTS_URL } from "@/features/podcasts/infrastructure/itunesUrls";
+import podcastLookup from "@/features/podcasts/infrastructure/__fixtures__/podcastLookup.sample.json";
+import topPodcasts from "@/features/podcasts/infrastructure/__fixtures__/topPodcasts.sample.json";
 
 describe("ItunesPodcastRepository", () => {
   it("loads top podcasts through the CORS-safe URL", async () => {
