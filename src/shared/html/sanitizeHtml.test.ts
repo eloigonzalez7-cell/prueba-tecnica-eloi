@@ -32,4 +32,12 @@ describe("sanitizeHtml", () => {
   it("returns an empty string for empty input", () => {
     expect(sanitizeHtml("")).toBe("");
   });
+
+  it("decodes entity-encoded HTML before sanitizing", () => {
+    const dirty =
+      "&lt;p&gt;Encoded &lt;strong&gt;html&lt;/strong&gt;&lt;/p&gt;";
+
+    expect(sanitizeHtml(dirty)).toBe("<p>Encoded <strong>html</strong></p>");
+  });
 });
+

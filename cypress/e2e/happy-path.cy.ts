@@ -2,11 +2,12 @@ describe("Podcaster happy path", () => {
   beforeEach(() => {
     cy.clearAllLocalStorage();
 
-    cy.intercept("GET", "**/itunes-proxy/**/toppodcasts/**", {
+    // Dev uses /itunes-proxy; prod uses AllOrigins (URL still contains these tokens).
+    cy.intercept("GET", /toppodcasts/, {
       fixture: "topPodcasts.json",
     }).as("topPodcasts");
 
-    cy.intercept("GET", "**/itunes-proxy/lookup*", {
+    cy.intercept("GET", /lookup/, {
       fixture: "podcastLookup.json",
     }).as("podcastLookup");
   });

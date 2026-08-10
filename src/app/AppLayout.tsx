@@ -14,15 +14,16 @@ export function AppLayout() {
   return (
     <>
       <header className={styles.header}>
-        <Link className={styles.brand} to="/">
-          Podcaster
-        </Link>
-        {isLoading ? (
-          <output className={styles.loading} aria-live="polite">
-            <span className={styles.spinner} aria-hidden="true" />
-            Loading
-          </output>
-        ) : null}
+        <nav className={styles.inner} aria-label="Primary">
+          <Link className={styles.brand} to="/">
+            Podcaster
+          </Link>
+          {isLoading ? (
+            <output className={styles.loading} aria-live="polite" aria-label="Loading">
+              <span className={styles.spinner} aria-hidden="true" />
+            </output>
+          ) : null}
+        </nav>
       </header>
       <main className={styles.main}>
         <Outlet />

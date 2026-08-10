@@ -10,11 +10,13 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "preview": "npx --yes serve dist -p 4173",
+    "preview": "npx --yes serve -s dist -l 4173",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:e2e": "cypress run",
     "cypress:open": "cypress open",
+    "cypress:smoke": "cypress run --config baseUrl=http://127.0.0.1:4173",
+    "smoke": "start-server-and-test preview http://127.0.0.1:4173 cypress:smoke",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "changelog": ".\\.tools\\git-cliff-2.9.0\\git-cliff.exe --config cliff.toml -o CHANGELOG.md"
   },
@@ -40,6 +42,7 @@
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "mini-css-extract-plugin": "^2.9.2",
+    "start-server-and-test": "^3.0.12",
     "style-loader": "^4.0.0",
     "ts-jest": "^29.4.12",
     "ts-loader": "^9.5.2",
