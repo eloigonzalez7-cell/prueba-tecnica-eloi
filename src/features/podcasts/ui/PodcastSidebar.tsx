@@ -1,24 +1,18 @@
 import { Link } from "react-router-dom";
 import type { Podcast } from "@/features/podcasts/domain/Podcast";
+import { sanitizeHtml } from "@/shared/html/sanitizeHtml";
 import styles from "@/features/podcasts/ui/PodcastSidebar.module.css";
 
 type PodcastSidebarProps = {
   readonly podcast: Podcast;
 };
 
-function toPlainText(value: string): string {
-  return value
-    .replace(/<[^>]*>/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
 /**
  * Reusable podcast summary panel (detail + episode views).
  */
 export function PodcastSidebar({ podcast }: PodcastSidebarProps) {
   const cover = podcast.images.medium || podcast.images.large;
-  const description = toPlainText(podcast.description);
+  const descriptionHtml = sanitizeHtml(podcast.description);
   const podcastPath = `/podcast/${podcast.id}`;
 
   return (
@@ -48,12 +42,21 @@ export function PodcastSidebar({ podcast }: PodcastSidebarProps) {
         <p className={styles.author}>by {podcast.author}</p>
       </header>
 
-      {description ? (
-        <section className={styles.description} aria-labelledby="podcast-description-heading">
-          <h3 id="podcast-description-heading" className={styles.descriptionHeading}>
+      {descriptionHtml ? (
+        <section
+          className={styles.description}
+          aria-labelledby="podcast-description-heading"
+        >
+          <h3
+            id="podcast-description-heading"
+            className={styles.descriptionHeading}
+          >
             Description
           </h3>
-          <p className={styles.descriptionText}>{description}</p>
+          <div
+            className={styles.descriptionText}
+            dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+          />
         </section>
       ) : null}
     </aside>
