@@ -35,9 +35,7 @@ export function HomePage() {
         setPodcasts([]);
         setError("Could not load podcasts. Check your connection and try again.");
       } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
+        setLoading(false);
       }
     })();
 

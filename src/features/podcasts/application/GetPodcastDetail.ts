@@ -6,7 +6,8 @@ import type {
 
 /**
  * Application use case: load a podcast and its episodes via the repository port.
- * When lookup omits the collection description, enrich it from the top-100 summary.
+ * When lookup omits the collection description, enrich it from the top-100 summary
+ * and persist the enriched snapshot so later visits skip the extra top-list read.
  */
 export class GetPodcastDetail {
   constructor(private readonly podcastRepository: PodcastRepository) {}
@@ -31,7 +32,7 @@ export class GetPodcastDetail {
         return detail;
       }
 
-      return {
+      const enriched: PodcastDetail = {
         podcast: new Podcast(
           detail.podcast.id,
           detail.podcast.title,
@@ -41,9 +42,18 @@ export class GetPodcastDetail {
         ),
         episodes: detail.episodes,
       };
+      this.podcastRepository.putPodcastDetail(enriched);
+      return enriched;
     } catch (error) {
+      if (isAbortError(error)) {
+        throw error;
+      }
       console.error(error);
       return detail;
     }
   }
+}
+
+function isAbortError(error: unknown): boolean {
+  return error instanceof DOMException && error.name === "AbortError";
 }

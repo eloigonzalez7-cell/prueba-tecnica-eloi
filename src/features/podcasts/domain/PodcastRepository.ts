@@ -15,4 +15,6 @@ export interface PodcastRepository {
     podcastId: string,
     signal?: AbortSignal,
   ): Promise<PodcastDetail>;
+  /** Persist a detail snapshot (e.g. after enriching description). No-op for remote-only adapters. */
+  putPodcastDetail(detail: PodcastDetail): void;
 }

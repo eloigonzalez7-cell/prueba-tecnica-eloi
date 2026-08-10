@@ -41,9 +41,7 @@ export function PodcastDetailPage() {
         setDetail(null);
         setError("Could not load this podcast. Check your connection and try again.");
       } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
+        setLoading(false);
       }
     })();
 

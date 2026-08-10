@@ -17,6 +17,9 @@ describe("domain ports", () => {
       async getPodcastDetail(_podcastId) {
         return { podcast, episodes: [] };
       },
+      putPodcastDetail() {
+        // no-op fake
+      },
     };
 
     await expect(repository.getTopPodcasts()).resolves.toHaveLength(1);
