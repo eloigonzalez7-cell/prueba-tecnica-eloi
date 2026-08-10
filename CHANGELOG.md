@@ -3,6 +3,16 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [0.5.0-episode] - 2026-08-10
+
+### Documentation
+
+- update changelog for v0.4.0-detail
+
+### Features
+
+- **shared:** sanitize episode html descriptions
+- **episode:** add episode detail with audio player
 ## [0.4.0-detail] - 2026-08-10
 
 ### Documentation
