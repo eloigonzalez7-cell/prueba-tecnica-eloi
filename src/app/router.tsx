@@ -1,7 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import { HomePage } from "../features/podcasts/ui/HomePage";
-import { AppLayout } from "./AppLayout";
-import { EpisodePlaceholder, PodcastPlaceholder } from "./PlaceholderPages";
+import { HomePage } from "@/features/podcasts/ui/HomePage";
+import { AppLayout } from "@/app/AppLayout";
+import {
+  EpisodePlaceholder,
+  PodcastPlaceholder,
+} from "@/app/PlaceholderPages";
 
 export function AppRouter() {
   return (

@@ -6,6 +6,9 @@ module.exports = {
   testMatch: ["**/?(*.)+(spec|test).[jt]s?(x)"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   clearMocks: true,
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+  },
   transform: {
     "^.+\\.tsx?$": [
       "ts-jest",
@@ -17,6 +20,10 @@ module.exports = {
           esModuleInterop: true,
           isolatedModules: true,
           strict: true,
+          baseUrl: ".",
+          paths: {
+            "@/*": ["src/*"],
+          },
         },
       },
     ],
