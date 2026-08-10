@@ -13,6 +13,7 @@ describe("GetTopPodcasts", () => {
     const podcastRepository: PodcastRepository = {
       getTopPodcasts: jest.fn().mockResolvedValue([podcast]),
       getPodcastDetail: jest.fn(),
+      putPodcastDetail: jest.fn(),
     };
 
     const useCase = new GetTopPodcasts(podcastRepository);

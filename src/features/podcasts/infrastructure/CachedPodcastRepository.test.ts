@@ -47,6 +47,7 @@ describe("CachedPodcastRepository", () => {
     const inner: PodcastRepository = {
       getTopPodcasts: jest.fn().mockResolvedValue([podcast]),
       getPodcastDetail: jest.fn(),
+      putPodcastDetail: jest.fn(),
     };
     const cache = createMemoryCache();
     const repository = new CachedPodcastRepository(inner, cache);
@@ -64,6 +65,7 @@ describe("CachedPodcastRepository", () => {
     const inner: PodcastRepository = {
       getTopPodcasts: jest.fn(),
       getPodcastDetail: jest.fn().mockResolvedValue(detail),
+      putPodcastDetail: jest.fn(),
     };
     const repository = new CachedPodcastRepository(inner, createMemoryCache());
 
@@ -76,5 +78,46 @@ describe("CachedPodcastRepository", () => {
       "2024-01-01T00:00:00.000Z",
     );
     expect(first.podcast.title).toBe("Title");
+  });
+
+  it("honours AbortSignal on cache hits", async () => {
+    const inner: PodcastRepository = {
+      getTopPodcasts: jest.fn().mockResolvedValue([podcast]),
+      getPodcastDetail: jest.fn().mockResolvedValue(detail),
+      putPodcastDetail: jest.fn(),
+    };
+    const repository = new CachedPodcastRepository(inner, createMemoryCache());
+    await repository.getTopPodcasts();
+    await repository.getPodcastDetail("1");
+
+    const controller = new AbortController();
+    controller.abort();
+
+    await expect(repository.getTopPodcasts(controller.signal)).rejects.toMatchObject({
+      name: "AbortError",
+    });
+    await expect(
+      repository.getPodcastDetail("1", controller.signal),
+    ).rejects.toMatchObject({ name: "AbortError" });
+  });
+
+  it("persists putPodcastDetail into the cache for later hits", async () => {
+    const inner: PodcastRepository = {
+      getTopPodcasts: jest.fn(),
+      getPodcastDetail: jest.fn(),
+      putPodcastDetail: jest.fn(),
+    };
+    const repository = new CachedPodcastRepository(inner, createMemoryCache());
+    const enriched: PodcastDetail = {
+      podcast: new Podcast("1", "Title", "Author", images, "Enriched"),
+      episodes: detail.episodes,
+    };
+
+    repository.putPodcastDetail(enriched);
+    const cached = await repository.getPodcastDetail("1");
+
+    expect(inner.getPodcastDetail).not.toHaveBeenCalled();
+    expect(cached.podcast.description).toBe("Enriched");
+    expect(inner.putPodcastDetail).toHaveBeenCalledWith(enriched);
   });
 });

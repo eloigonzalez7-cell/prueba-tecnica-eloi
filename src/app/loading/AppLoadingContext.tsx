@@ -35,11 +35,15 @@ export function useAppLoading(): AppLoadingContextValue {
 
 /**
  * Keep the header loading cue in sync with a page-local loading flag.
+ * Always clear on unmount so aborted navigations cannot leave the spinner stuck.
  */
 export function useSyncAppLoading(localLoading: boolean): void {
   const { setLoading } = useAppLoading();
 
   useEffect(() => {
     setLoading(localLoading);
+    return () => {
+      setLoading(false);
+    };
   }, [localLoading, setLoading]);
 }

@@ -4,10 +4,27 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
-    ignores: ["dist/**", "coverage/**", "node_modules/**", "webpack.*.js"],
+    ignores: [
+      "dist/**",
+      "coverage/**",
+      "node_modules/**",
+      "webpack.*.js",
+      "cypress/**",
+      "jest.config.cjs",
+      "jest.css-mock.cjs",
+      "eslint.config.mjs",
+    ],
   },
   js.configs.recommended,
-  ...tseslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
+  {
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
   {
     files: ["src/**/*.{ts,tsx}"],
     plugins: {
@@ -20,5 +37,9 @@ export default tseslint.config(
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
       ],
     },
+  },
+  {
+    files: ["src/**/*.test.ts", "src/**/*.test.tsx"],
+    extends: [tseslint.configs.disableTypeChecked],
   },
 );
