@@ -5,22 +5,19 @@ Generated from Conventional Commits and git tags via [git-cliff](https://git-cli
 
 ## [1.1.0] - 2026-08-10
 
-### Features
+### Documentation
 
-- persist enriched podcast descriptions in the 24h detail cache (`putPodcastDetail`)
-- route-level code splitting with `React.lazy` / `Suspense`
-- visible load error banner with Retry on home, podcast, and episode pages
+- update changelog for v1.0.0
+- update changelog for v1.1.0
+
+### Miscellaneous
+
+- upgrade to TypeScript 6 and ES2024
+- complete P2 hardening (cache write-back, lazy routes, lint)
 
 ### Testing
 
-- harden UI coverage and load error UX (RTL + Cypress filter/spinner)
-
-### Chores
-
-- upgrade to TypeScript 6 and ES2024
-- complete P2 hardening (AbortSignal on cache hits, typed ESLint, drop trivial smoke test)
-- move composition root to `src/app/` and run `typecheck` in CI
-
+- harden UI coverage and load error UX
 ## [1.0.0] - 2026-08-10
 
 ### Documentation
