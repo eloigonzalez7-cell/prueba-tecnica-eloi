@@ -12,6 +12,37 @@ describe("Podcaster happy path", () => {
     }).as("podcastLookup");
   });
 
+  it("filters podcasts by title while typing", () => {
+    cy.visit("/");
+    cy.wait("@topPodcasts");
+
+    cy.get("#podcast-filter").should("not.be.disabled");
+    cy.contains("output", "2").should("be.visible");
+    cy.contains("a", "The Joe Budden Podcast").should("be.visible");
+    cy.contains("a", "Song Exploder").should("be.visible");
+
+    cy.get("#podcast-filter").type("song");
+    cy.contains("output", "1").should("be.visible");
+    cy.contains("a", "Song Exploder").should("be.visible");
+    cy.contains("a", "The Joe Budden Podcast").should("not.exist");
+  });
+
+  it("shows the header loading indicator during navigation", () => {
+    cy.intercept("GET", /lookup/, {
+      fixture: "podcastLookup.json",
+      delay: 600,
+    }).as("slowPodcastLookup");
+
+    cy.visit("/");
+    cy.wait("@topPodcasts");
+
+    cy.contains("a", "The Joe Budden Podcast").click();
+    cy.get('[aria-label="Loading"]').should("be.visible");
+    cy.wait("@slowPodcastLookup");
+    cy.url().should("include", "/podcast/1535809341");
+    cy.get('[aria-label="Loading"]').should("not.exist");
+  });
+
   it("navigates home → podcast detail → episode detail", () => {
     cy.visit("/");
     cy.wait("@topPodcasts");

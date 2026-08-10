@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSyncAppLoading } from "@/app/loading/AppLoadingContext";
+import { getPodcastDetail } from "@/app/podcastDependencies";
 import type { Episode } from "@/features/podcasts/domain/Episode";
 import type { PodcastDetail } from "@/features/podcasts/domain/PodcastRepository";
-import { getPodcastDetail } from "@/features/podcasts/ui/podcastDependencies";
 import { PodcastSidebar } from "@/features/podcasts/ui/PodcastSidebar";
 import { sanitizeHtml } from "@/shared/html/sanitizeHtml";
 import layoutStyles from "@/features/podcasts/ui/PodcastDetailPage.module.css";
@@ -16,6 +16,8 @@ export function EpisodeDetailPage() {
   }>();
   const [detail, setDetail] = useState<PodcastDetail | null>(null);
   const [loading, setLoading] = useState(Boolean(podcastId && episodeId));
+  const [error, setError] = useState<string | null>(null);
+  const [reloadToken, setReloadToken] = useState(0);
   useSyncAppLoading(loading);
 
   useEffect(() => {
@@ -27,6 +29,7 @@ export function EpisodeDetailPage() {
 
     void (async () => {
       setLoading(true);
+      setError(null);
       try {
         const result = await getPodcastDetail.execute(
           podcastId,
@@ -35,12 +38,13 @@ export function EpisodeDetailPage() {
         if (!controller.signal.aborted) {
           setDetail(result);
         }
-      } catch (error) {
+      } catch (loadError) {
         if (controller.signal.aborted) {
           return;
         }
-        console.error(error);
+        console.error(loadError);
         setDetail(null);
+        setError("Could not load this episode. Check your connection and try again.");
       } finally {
         if (!controller.signal.aborted) {
           setLoading(false);
@@ -51,7 +55,7 @@ export function EpisodeDetailPage() {
     return () => {
       controller.abort();
     };
-  }, [podcastId]);
+  }, [podcastId, reloadToken]);
 
   if (!podcastId || !episodeId) {
     return (
@@ -82,11 +86,24 @@ export function EpisodeDetailPage() {
         </>
       ) : null}
 
-      {!loading && (!detail || !episode) ? (
+      {!loading && error ? (
+        <div className={layoutStyles.errorBanner} role="alert">
+          <p className={layoutStyles.errorMessage}>{error}</p>
+          <button
+            type="button"
+            className={layoutStyles.retryButton}
+            onClick={() => setReloadToken((token) => token + 1)}
+          >
+            Retry
+          </button>
+        </div>
+      ) : null}
+
+      {!loading && !error && (!detail || !episode) ? (
         <p className={layoutStyles.status}>Episode not found.</p>
       ) : null}
 
-      {!loading && detail && episode ? (
+      {!loading && !error && detail && episode ? (
         <>
           <PodcastSidebar podcast={detail.podcast} />
           <article className={styles.panel} aria-labelledby="episode-title">

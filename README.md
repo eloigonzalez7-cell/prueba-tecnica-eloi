@@ -42,6 +42,7 @@ npm run preview
 | `npm run cypress:open` | Cypress interactive runner |
 | `npm run smoke` | Serve production build + Cypress against `:4173` |
 | `npm run lint` | ESLint (`src/**/*.{ts,tsx}`) |
+| `npm run typecheck` | TypeScript `tsc --noEmit` |
 | `npm run changelog` | Regenerate `CHANGELOG.md` with local git-cliff |
 
 ### E2E tips
@@ -64,6 +65,7 @@ Specs intercept iTunes traffic (dev proxy or AllOrigins) with fixtures under `cy
 - **Podcast** `/podcast/:podcastId` — sidebar + episodes table, 24h cache; empty lookup description enriched from top-feed summary
 - **Episode** `/podcast/:podcastId/episode/:episodeId` — DOMPurify-sanitized HTML description + `<audio controls>`
 - **Chrome** — “Podcaster” header link → home; top-right loading spinner while fetching
+- Visible **error + Retry** on failed loads (also logged to the console)
 - Clean URLs (React Router, no hash routing)
 - Semantic HTML + CSS Modules (native CSS only)
 
@@ -73,19 +75,20 @@ Feature-oriented **hexagonal** layout:
 
 ```text
 src/
-  app/                 # shell, router, loading context
+  app/                 # shell, router, loading context, composition root
   shared/              # http, html sanitize, global tokens
   features/podcasts/
     domain/            # Podcast, Episode, ports (no React / no fetch)
     application/       # use cases (GetTopPodcasts, FilterPodcasts, GetPodcastDetail)
     infrastructure/    # iTunes adapters, cache decorator, mappers
-    ui/                # React pages + composition root (podcastDependencies)
+    ui/                # React pages and presentational components
 ```
 
 Rules of thumb:
 
 - UI never knows iTunes or AllOrigins URLs.
 - Domain has no React/fetch.
+- Composition root lives in `src/app/podcastDependencies.ts`.
 - Path alias: `@/*` → `src/*` (TypeScript, Webpack, Jest).
 
 ## Stack
@@ -99,7 +102,7 @@ Rules of thumb:
 | Unit tests | Jest + Testing Library |
 | E2E | Cypress |
 | HTML safety | DOMPurify |
-| CI | GitHub Actions (`lint` / `test` / `build` / `e2e-smoke` / changelog check) |
+| CI | GitHub Actions (`typecheck` / `lint` / `test` / `build` / `e2e-smoke` / changelog check) |
 
 ## Documentation
 

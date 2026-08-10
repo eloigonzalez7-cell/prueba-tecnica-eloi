@@ -15,7 +15,8 @@ Organize the podcasts capability as a hexagonal feature under `src/features/podc
 - **domain** — entities (`Podcast`, `Episode`) and ports (`PodcastRepository`, `CacheStore`)
 - **application** — use cases (`GetTopPodcasts`, `FilterPodcasts`, `GetPodcastDetail`)
 - **infrastructure** — iTunes repository, AllOrigins/dev proxy, mappers, cached decorator, localStorage
-- **ui** — React pages, presentational components, composition root (`podcastDependencies`)
+- **ui** — React pages and presentational components
+- **app composition root** — `src/app/podcastDependencies.ts` wires repositories and use cases
 
 Shared kernel under `src/shared/` (HTTP client, HTML sanitize, tokens). App shell under `src/app/`.
 
