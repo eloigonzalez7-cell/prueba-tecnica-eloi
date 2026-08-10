@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSyncAppLoading } from "@/app/loading/AppLoadingContext";
 import type { Episode } from "@/features/podcasts/domain/Episode";
 import type { PodcastDetail } from "@/features/podcasts/domain/PodcastRepository";
 import { getPodcastDetail } from "@/features/podcasts/ui/podcastDependencies";
@@ -14,7 +15,8 @@ export function EpisodeDetailPage() {
     episodeId: string;
   }>();
   const [detail, setDetail] = useState<PodcastDetail | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(Boolean(podcastId && episodeId));
+  useSyncAppLoading(loading);
 
   useEffect(() => {
     if (!podcastId) {
