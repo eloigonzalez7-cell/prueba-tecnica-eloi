@@ -6,7 +6,7 @@ Maps the Inditex frontend challenge requirements to backlog epics and implementa
 |-------------|------|-------|
 | SPA with client-side navigation | E0 | React Router `BrowserRouter` |
 | Dev unminified / prod minified | E0 | Webpack dual configs |
-| Public repo + incremental commits + tags | E0, E1, E9 | Milestone tags through `v1.0.0` |
+| Public repo + incremental commits + tags | E0, E1, E9 | Milestone tags through `v1.1.0` |
 | README for both modes | E9 | [README.md](../README.md) |
 | Clean URLs (no hash) | E0 | `historyApiFallback` + Router |
 | Home top 100 podcasts | E3, E4 | Apple RSS via repository |
