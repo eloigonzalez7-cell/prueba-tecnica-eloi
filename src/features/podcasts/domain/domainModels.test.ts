@@ -1,5 +1,5 @@
-import { Episode } from "./Episode";
-import { Podcast } from "./Podcast";
+import { Episode } from "@/features/podcasts/domain/Episode";
+import { Podcast } from "@/features/podcasts/domain/Podcast";
 
 describe("Podcast", () => {
   it("creates a podcast with stable identity fields", () => {

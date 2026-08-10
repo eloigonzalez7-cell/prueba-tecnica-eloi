@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Podcast } from "@/features/podcasts/domain/Podcast";
-import styles from "./HomePage.module.css";
-import { filterPodcasts, getTopPodcasts } from "./podcastDependencies";
+import { filterPodcasts, getTopPodcasts } from "@/features/podcasts/ui/podcastDependencies";
+import styles from "@/features/podcasts/ui/HomePage.module.css";
 
 export function HomePage() {
   const [podcasts, setPodcasts] = useState<Podcast[]>([]);

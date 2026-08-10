@@ -1,4 +1,4 @@
-import type { Podcast } from "../domain/Podcast";
+import type { Podcast } from "@/features/podcasts/domain/Podcast";
 
 /**
  * Pure use case: live filter by podcast title or author (case-insensitive).

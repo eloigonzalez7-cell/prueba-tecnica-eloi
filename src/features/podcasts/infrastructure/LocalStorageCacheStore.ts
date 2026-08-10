@@ -1,5 +1,5 @@
-import type { CacheStore } from "../domain/CacheStore";
-import { CACHE_SCHEMA_VERSION, ONE_DAY_MS } from "./cacheTtl";
+import type { CacheStore } from "@/features/podcasts/domain/CacheStore";
+import { CACHE_SCHEMA_VERSION, ONE_DAY_MS } from "@/features/podcasts/infrastructure/cacheTtl";
 
 type CacheEnvelope<T> = {
   schemaVersion: typeof CACHE_SCHEMA_VERSION;
