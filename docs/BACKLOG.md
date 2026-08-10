@@ -26,7 +26,7 @@ Delivery style: **micro-PRs** mapped to steps `S00`–`S37`.
 | E8 | Cypress e2e + smoke | S33–S35 | Done (`v0.7.0-tests`; suite expanded on `v1.1.0` / `v1.2.0`) |
 | E9 | Delivery docs (README, ADRs, traceability) | S36–S37 | Done (`v1.0.0`; milestones through `v1.2.0`) |
 
-Current delivery tag: **`v1.2.0`** (Cypress suite + episode URL linkify).
+Current delivery tag: **`v1.2.1`** (patch: PodcastDetailPage RTL coverage; previous minor `v1.2.0` = Cypress suite + episode URL linkify).
 
 ## Brief requirements → epic mapping
 
@@ -49,4 +49,4 @@ Current delivery tag: **`v1.2.0`** (Cypress suite + episode URL linkify).
 - [x] Unit tests for touched domain/application logic
 - [x] Conventional commit + small PR
 - [x] CI green on the PR
-- [x] Before a version tag: `npm run changelog` and commit `CHANGELOG.md`
+- [x] Before a version tag: update `CHANGELOG.md` **and** README (`Current release`, Features, Milestone tags) + REQUIREMENTS/BACKLOG delivery notes; commit with `chore(release): …`
