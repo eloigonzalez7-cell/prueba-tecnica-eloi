@@ -20,6 +20,26 @@
           }
         ],
         "summary": { "label": "Tune into Joe Budden" }
+      },
+      {
+        "id": { "attributes": { "im:id": "131944808" } },
+        "im:name": { "label": "Song Exploder" },
+        "im:artist": { "label": "Hrishikesh Hirway" },
+        "im:image": [
+          {
+            "label": "https://example.com/se55.jpg",
+            "attributes": { "height": "55" }
+          },
+          {
+            "label": "https://example.com/se60.jpg",
+            "attributes": { "height": "60" }
+          },
+          {
+            "label": "https://example.com/se170.jpg",
+            "attributes": { "height": "170" }
+          }
+        ],
+        "summary": { "label": "A podcast about how songs are made" }
       }
     ]
   }

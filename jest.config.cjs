@@ -7,6 +7,8 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   clearMocks: true,
   moduleNameMapper: {
+    "\\.module\\.css$": "<rootDir>/jest.css-mock.cjs",
+    "\\.css$": "<rootDir>/jest.css-mock.cjs",
     "^@/(.*)$": "<rootDir>/src/$1",
   },
   transform: {

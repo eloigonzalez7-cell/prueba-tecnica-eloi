@@ -10,10 +10,10 @@ The challenge asks for unit tests and e2e. Domain rules (filter, TTL cache, mapp
 
 ## Decision
 
-- **Jest + Testing Library** — unit tests; fake repositories and mocked clocks for TTL; jsdom for DOM-related helpers (DOMPurify)
-- **Cypress** — e2e happy path across home → podcast → episode with fixture intercepts
+- **Jest + Testing Library** — unit tests for domain/application/infrastructure; RTL for critical UI (`HomePage` filter/error/loading); fake repositories and mocked clocks for TTL; jsdom for DOM helpers (DOMPurify)
+- **Cypress** — e2e covers filter, header loading spinner, and happy path home → podcast → episode with fixture intercepts
 - **`npm run smoke`** — serve `dist/` on `:4173` via `start-server-and-test`, then Cypress with prod `baseUrl`
-- **CI** — `lint` + unit tests + production build + `e2e-smoke` job; changelog drift check (strict on version tags)
+- **CI** — `typecheck` + `lint` + unit tests + production build + `e2e-smoke` job; changelog drift check (strict on version tags)
 
 E2E intercepts match both the Webpack `/itunes-proxy` (dev) and AllOrigins URLs (prod).
 
