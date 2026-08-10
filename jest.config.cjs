@@ -15,14 +15,14 @@ module.exports = {
       {
         tsconfig: {
           module: "CommonJS",
-          moduleResolution: "node",
+          moduleResolution: "nodenext",
           jsx: "react-jsx",
           esModuleInterop: true,
           isolatedModules: true,
           strict: true,
-          baseUrl: ".",
+          types: ["jest", "node"],
           paths: {
-            "@/*": ["src/*"],
+            "@/*": ["./src/*"],
           },
         },
       },
