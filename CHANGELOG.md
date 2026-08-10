@@ -3,6 +3,16 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [0.6.0-chrome] - 2026-08-10
+
+### Documentation
+
+- update changelog for v0.5.0-episode
+
+### Features
+
+- **app:** add header link to home
+- **app:** show loading indicator on client navigation
 ## [0.5.0-episode] - 2026-08-10
 
 ### Documentation
