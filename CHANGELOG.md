@@ -3,6 +3,20 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [0.7.0-tests] - 2026-08-10
+
+### Bug Fixes
+
+- **podcasts:** enrich descriptions, align home UI, add prod smoke
+
+### Documentation
+
+- update changelog for v0.6.0-chrome
+
+### Testing
+
+- add cypress tooling
+- add cypress happy path across three views
 ## [0.6.0-chrome] - 2026-08-10
 
 ### Documentation
