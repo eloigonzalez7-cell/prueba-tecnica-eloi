@@ -3,6 +3,13 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [1.0.0] - 2026-08-10
+
+### Documentation
+
+- update changelog for v0.7.0-tests
+- complete readme with runbook
+- add delivery adrs and requirements traceability
 ## [0.7.0-tests] - 2026-08-10
 
 ### Bug Fixes
