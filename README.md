@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml/badge.svg)](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml)
 
-**Current release:** [`v1.2.1`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.2.1) — see [CHANGELOG.md](CHANGELOG.md).
+**Current release:** [`v1.2.2`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.2.2) — see [CHANGELOG.md](CHANGELOG.md).
 
 Single-page application to browse Apple’s top music podcasts, open podcast details, and play episodes. Built for the **Inditex frontend technical challenge**.
 
@@ -128,7 +128,7 @@ Rules of thumb:
 
 ## Milestone tags
 
-`v0.0.0-init` → `v0.1.0-foundation` → `v0.2.0-domain` → `v0.2.1-data` → `v0.3.0-home` → `v0.4.0-detail` → `v0.5.0-episode` → `v0.6.0-chrome` → `v0.7.0-tests` → `v1.0.0` → `v1.1.0` → `v1.2.0` → `v1.2.1`
+`v0.0.0-init` → `v0.1.0-foundation` → `v0.2.0-domain` → `v0.2.1-data` → `v0.3.0-home` → `v0.4.0-detail` → `v0.5.0-episode` → `v0.6.0-chrome` → `v0.7.0-tests` → `v1.0.0` → `v1.1.0` → `v1.2.0` → `v1.2.1` → `v1.2.2`
 
 ### SemVer (MAJOR.MINOR.PATCH)
 
@@ -136,7 +136,7 @@ Rules of thumb:
 |------|---------|----------------------|
 | **MAJOR** `X.0.0` | Breaking / delivery baseline | `v1.0.0` |
 | **MINOR** `x.Y.0` | New capability, backwards compatible | `v1.1.0`, `v1.2.0` (Cypress suite + linkify) |
-| **PATCH** `x.y.Z` | Small fix or hardening (tests, docs polish) | `v1.2.1` (RTL coverage for podcast detail) |
+| **PATCH** `x.y.Z` | Small fix or hardening (tests, docs polish) | `v1.2.1` (detail RTL), `v1.2.2` (podcast description linkify) |
 
 ### Release checklist
 
