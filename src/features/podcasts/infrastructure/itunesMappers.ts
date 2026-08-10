@@ -26,6 +26,7 @@ type LookupResult = {
   trackName?: string;
   artistName?: string;
   description?: string;
+  shortDescription?: string;
   artworkUrl60?: string;
   artworkUrl100?: string;
   artworkUrl600?: string;
@@ -129,7 +130,11 @@ export function mapPodcastDetail(
     title,
     author,
     pickImagesFromLookup(collection),
-    collection.description?.trim() ?? "",
+    (
+      collection.description ??
+      collection.shortDescription ??
+      ""
+    ).trim(),
   );
 
   const episodes = results
@@ -143,6 +148,7 @@ export function mapPodcastDetail(
       const publishedAt = new Date(item.releaseDate ?? "");
       const durationMs = item.trackTimeMillis ?? 0;
       const audioUrl = item.episodeUrl ?? item.previewUrl ?? "";
+      const description = item.description ?? item.shortDescription ?? "";
 
       if (!episodeId || !episodeTitle || Number.isNaN(publishedAt.getTime())) {
         return null;
@@ -152,7 +158,7 @@ export function mapPodcastDetail(
         episodeId,
         id,
         episodeTitle,
-        item.description ?? "",
+        description,
         publishedAt,
         durationMs,
         audioUrl,

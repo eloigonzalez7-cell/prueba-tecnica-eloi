@@ -1,19 +1,24 @@
 :root {
-  --color-bg: #f7f7f5;
+  --color-bg: #ffffff;
   --color-surface: #ffffff;
-  --color-text: #1a1a1a;
-  --color-text-muted: #595959;
-  --color-border: #e2e2e0;
-  --color-accent: #0b5fff;
-  --font-sans: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --color-text: #222222;
+  --color-text-muted: #777777;
+  --color-border: #e6e6e6;
+  --color-accent: #0085d1;
+  --color-header: #ffffff;
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.12);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
-  --radius: 4px;
-  --header-height: 3.5rem;
+  --radius: 2px;
+  --header-height: 56px;
+  --page-max: 1100px;
+  --page-gutter: 40px;
+  --cover-size: 100px;
 }
 
 *,
@@ -40,8 +45,19 @@ body {
   color: var(--color-text);
   background: var(--color-bg);
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
-  color: inherit;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button,
+input {
+  font: inherit;
 }
