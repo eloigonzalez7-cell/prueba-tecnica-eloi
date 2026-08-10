@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSyncAppLoading } from "@/app/loading/AppLoadingContext";
+import { getPodcastDetail } from "@/app/podcastDependencies";
 import type { PodcastDetail } from "@/features/podcasts/domain/PodcastRepository";
 import { EpisodesTable } from "@/features/podcasts/ui/EpisodesTable";
-import { getPodcastDetail } from "@/features/podcasts/ui/podcastDependencies";
 import { PodcastSidebar } from "@/features/podcasts/ui/PodcastSidebar";
 import styles from "@/features/podcasts/ui/PodcastDetailPage.module.css";
 
@@ -11,6 +11,8 @@ export function PodcastDetailPage() {
   const { podcastId } = useParams<{ podcastId: string }>();
   const [detail, setDetail] = useState<PodcastDetail | null>(null);
   const [loading, setLoading] = useState(Boolean(podcastId));
+  const [error, setError] = useState<string | null>(null);
+  const [reloadToken, setReloadToken] = useState(0);
   useSyncAppLoading(loading);
 
   useEffect(() => {
@@ -22,6 +24,7 @@ export function PodcastDetailPage() {
 
     void (async () => {
       setLoading(true);
+      setError(null);
       try {
         const result = await getPodcastDetail.execute(
           podcastId,
@@ -30,12 +33,13 @@ export function PodcastDetailPage() {
         if (!controller.signal.aborted) {
           setDetail(result);
         }
-      } catch (error) {
+      } catch (loadError) {
         if (controller.signal.aborted) {
           return;
         }
-        console.error(error);
+        console.error(loadError);
         setDetail(null);
+        setError("Could not load this podcast. Check your connection and try again.");
       } finally {
         if (!controller.signal.aborted) {
           setLoading(false);
@@ -46,7 +50,7 @@ export function PodcastDetailPage() {
     return () => {
       controller.abort();
     };
-  }, [podcastId]);
+  }, [podcastId, reloadToken]);
 
   if (!podcastId) {
     return (
@@ -77,11 +81,24 @@ export function PodcastDetailPage() {
         </>
       ) : null}
 
-      {!loading && !detail ? (
+      {!loading && error ? (
+        <div className={styles.errorBanner} role="alert">
+          <p className={styles.errorMessage}>{error}</p>
+          <button
+            type="button"
+            className={styles.retryButton}
+            onClick={() => setReloadToken((token) => token + 1)}
+          >
+            Retry
+          </button>
+        </div>
+      ) : null}
+
+      {!loading && !error && !detail ? (
         <p className={styles.status}>Podcast not found.</p>
       ) : null}
 
-      {!loading && detail ? (
+      {!loading && !error && detail ? (
         <>
           <PodcastSidebar podcast={detail.podcast} />
           <EpisodesTable episodes={detail.episodes} />
