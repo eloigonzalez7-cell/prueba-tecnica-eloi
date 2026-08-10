@@ -107,12 +107,16 @@ Rules of thumb:
 |-----|-------------|
 | [docs/BACKLOG.md](docs/BACKLOG.md) | Epic backlog (S00–S37) |
 | [docs/ESTIMATIONS.md](docs/ESTIMATIONS.md) | Effort notes |
+| [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md) | Requirements ↔ epic traceability |
+| [docs/adr/0001-webpack.md](docs/adr/0001-webpack.md) | ADR: Webpack 5 |
+| [docs/adr/0002-hexagonal.md](docs/adr/0002-hexagonal.md) | ADR: hexagonal feature modules |
+| [docs/adr/0003-caching.md](docs/adr/0003-caching.md) | ADR: 24h localStorage cache |
+| [docs/adr/0004-testing-strategy.md](docs/adr/0004-testing-strategy.md) | ADR: Jest + Cypress |
 | [CHANGELOG.md](CHANGELOG.md) | Generated from Conventional Commits + tags |
-| ADRs / requirements matrix | Delivery docs (next milestone) |
 
 ## Milestone tags
 
-`v0.0.0-init` → `v0.1.0-foundation` → `v0.2.0-domain` → `v0.2.1-data` → `v0.3.0-home` → `v0.4.0-detail` → `v0.5.0-episode` → `v0.6.0-chrome` → `v0.7.0-tests` → `v1.0.0` (delivery)
+`v0.0.0-init` → `v0.1.0-foundation` → `v0.2.0-domain` → `v0.2.1-data` → `v0.3.0-home` → `v0.4.0-detail` → `v0.5.0-episode` → `v0.6.0-chrome` → `v0.7.0-tests` → `v1.0.0`
 
 ## License
 
