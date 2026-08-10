@@ -3,6 +3,23 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [0.2.1-data] - 2026-08-10
+
+### Bug Fixes
+
+- **podcasts:** export itunes mapper payload types
+
+### Documentation
+
+- update changelog for v0.2.0-domain
+
+### Features
+
+- **shared:** add http client with abort
+- **shared:** add allorigins cors adapter
+- **podcasts:** map itunes payloads to domain
+- **podcasts:** implement itunes repository
+- **podcasts:** wrap repository with cache
 ## [0.2.0-domain] - 2026-08-09
 
 ### Bug Fixes
