@@ -49,4 +49,4 @@ Current delivery tag: **`v1.2.0`** (Cypress suite + episode URL linkify).
 - [x] Unit tests for touched domain/application logic
 - [x] Conventional commit + small PR
 - [x] CI green on the PR
-- [x] Before a version tag: `npm run changelog` and commit `CHANGELOG.md`
+- [x] Before a version tag: update `CHANGELOG.md` **and** README (`Current release`, Features, Milestone tags) + REQUIREMENTS/BACKLOG delivery notes; commit with `chore(release): …`
