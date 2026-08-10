@@ -1,10 +1,17 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import styles from "@/app/AppLayout.module.css";
 
 export function AppLayout() {
   return (
-    <main className={styles.main}>
-      <Outlet />
-    </main>
+    <>
+      <header className={styles.header}>
+        <Link className={styles.brand} to="/">
+          Podcaster
+        </Link>
+      </header>
+      <main className={styles.main}>
+        <Outlet />
+      </main>
+    </>
   );
 }
