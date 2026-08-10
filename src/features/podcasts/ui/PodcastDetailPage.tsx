@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import type { PodcastDetail } from "@/features/podcasts/domain/PodcastRepository";
+import { EpisodesTable } from "@/features/podcasts/ui/EpisodesTable";
 import { getPodcastDetail } from "@/features/podcasts/ui/podcastDependencies";
 import { PodcastSidebar } from "@/features/podcasts/ui/PodcastSidebar";
 import styles from "@/features/podcasts/ui/PodcastDetailPage.module.css";
@@ -55,7 +56,24 @@ export function PodcastDetailPage() {
 
   return (
     <section className={styles.page}>
-      {loading ? <p className={styles.status}>Loading podcast…</p> : null}
+      {loading ? (
+        <>
+          <p className={styles.srOnly}>Loading podcast…</p>
+          <aside className={styles.sidebarSkeleton} aria-hidden="true">
+            <span className={styles.skeletonCover} />
+            <span className={styles.skeletonLine} />
+            <span className={styles.skeletonLineShort} />
+            <span className={styles.skeletonBlock} />
+          </aside>
+          <section className={styles.contentSkeleton} aria-hidden="true">
+            <span className={styles.skeletonHeader} />
+            <span className={styles.skeletonRow} />
+            <span className={styles.skeletonRow} />
+            <span className={styles.skeletonRow} />
+            <span className={styles.skeletonRow} />
+          </section>
+        </>
+      ) : null}
 
       {!loading && !detail ? (
         <p className={styles.status}>Podcast not found.</p>
@@ -64,10 +82,7 @@ export function PodcastDetailPage() {
       {!loading && detail ? (
         <>
           <PodcastSidebar podcast={detail.podcast} />
-          <section
-            className={styles.content}
-            aria-label={`Episodes for ${detail.podcast.title}`}
-          />
+          <EpisodesTable episodes={detail.episodes} />
         </>
       ) : null}
     </section>
