@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml/badge.svg)](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml)
 
-**Current release:** [`v1.2.0`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.2.0) — see [CHANGELOG.md](CHANGELOG.md).
+**Current release:** [`v1.2.1`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.2.1) — see [CHANGELOG.md](CHANGELOG.md).
 
 Single-page application to browse Apple’s top music podcasts, open podcast details, and play episodes. Built for the **Inditex frontend technical challenge**.
 
@@ -128,14 +128,22 @@ Rules of thumb:
 
 ## Milestone tags
 
-`v0.0.0-init` → `v0.1.0-foundation` → `v0.2.0-domain` → `v0.2.1-data` → `v0.3.0-home` → `v0.4.0-detail` → `v0.5.0-episode` → `v0.6.0-chrome` → `v0.7.0-tests` → `v1.0.0` → `v1.1.0` → `v1.2.0`
+`v0.0.0-init` → `v0.1.0-foundation` → `v0.2.0-domain` → `v0.2.1-data` → `v0.3.0-home` → `v0.4.0-detail` → `v0.5.0-episode` → `v0.6.0-chrome` → `v0.7.0-tests` → `v1.0.0` → `v1.1.0` → `v1.2.0` → `v1.2.1`
+
+### SemVer (MAJOR.MINOR.PATCH)
+
+| Bump | Meaning | Example in this repo |
+|------|---------|----------------------|
+| **MAJOR** `X.0.0` | Breaking / delivery baseline | `v1.0.0` |
+| **MINOR** `x.Y.0` | New capability, backwards compatible | `v1.1.0`, `v1.2.0` (Cypress suite + linkify) |
+| **PATCH** `x.y.Z` | Small fix or hardening (tests, docs polish) | `v1.2.1` (RTL coverage for podcast detail) |
 
 ### Release checklist
 
 Before tagging a new version, update **all** of:
 
 1. `CHANGELOG.md` (git-cliff / Conventional Commits)
-2. **This README** — `Current release`, Features (if behaviour changed), Milestone tags
+2. **This README** — `Current release`, Features (if behaviour changed), Milestone tags, SemVer examples if useful
 3. `docs/REQUIREMENTS.md` + `docs/BACKLOG.md` delivery tag notes
 4. Commit with `chore(release): sync changelog for vX.Y.Z` (skipped by git-cliff), then tag `vX.Y.Z`
 
