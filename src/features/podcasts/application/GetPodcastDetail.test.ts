@@ -31,6 +31,7 @@ describe("GetPodcastDetail", () => {
     const podcastRepository: PodcastRepository = {
       getTopPodcasts: jest.fn(),
       getPodcastDetail: jest.fn().mockResolvedValue(detail),
+      putPodcastDetail: jest.fn(),
     };
 
     const useCase = new GetPodcastDetail(podcastRepository);
@@ -54,6 +55,7 @@ describe("GetPodcastDetail", () => {
         new Podcast("99", "Show", "Host", images, "From top feed summary"),
       ]),
       getPodcastDetail: jest.fn().mockResolvedValue(detail),
+      putPodcastDetail: jest.fn(),
     };
 
     const useCase = new GetPodcastDetail(podcastRepository);
@@ -62,5 +64,12 @@ describe("GetPodcastDetail", () => {
     expect(result.podcast.description).toBe("From top feed summary");
     expect(result.episodes).toEqual(detail.episodes);
     expect(podcastRepository.getTopPodcasts).toHaveBeenCalled();
+    expect(podcastRepository.putPodcastDetail).toHaveBeenCalledWith(
+      expect.objectContaining({
+        podcast: expect.objectContaining({
+          description: "From top feed summary",
+        }),
+      }),
+    );
   });
 });

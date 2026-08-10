@@ -15,7 +15,7 @@ Maps the Inditex frontend challenge requirements to backlog epics and implementa
 | Navigate to podcast detail | E5 | `/podcast/:podcastId` |
 | Podcast sidebar (image, title, author, description) | E5 | Shared `PodcastSidebar` |
 | Episode count + list (title, date, duration) | E5 | `EpisodesTable` |
-| Cache podcast detail 24h | E2, E3, E5 | Per-id cache key |
+| Cache podcast detail 24h | E2, E3, E5 | Per-id cache key; enriched descriptions written back via `putPodcastDetail` |
 | Navigate to episode | E6 | `/podcast/:id/episode/:episodeId` |
 | Episode sidebar links back to podcast | E5, E6 | Title/cover links on sidebar |
 | Episode title, HTML description, audio | E6 | DOMPurify + `<audio controls>` |

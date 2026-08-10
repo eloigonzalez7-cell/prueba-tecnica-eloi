@@ -46,9 +46,7 @@ export function EpisodeDetailPage() {
         setDetail(null);
         setError("Could not load this episode. Check your connection and try again.");
       } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
+        setLoading(false);
       }
     })();
 
