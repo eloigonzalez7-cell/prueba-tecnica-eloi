@@ -1,4 +1,4 @@
-import { fetchJson, HttpError } from "./fetchJson";
+import { fetchJson, HttpError } from "@/shared/http/fetchJson";
 
 describe("fetchJson", () => {
   it("returns parsed JSON on success", async () => {

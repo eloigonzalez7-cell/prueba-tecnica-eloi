@@ -1,5 +1,5 @@
-import type { Podcast } from "../domain/Podcast";
-import type { PodcastRepository } from "../domain/PodcastRepository";
+import type { Podcast } from "@/features/podcasts/domain/Podcast";
+import type { PodcastRepository } from "@/features/podcasts/domain/PodcastRepository";
 
 /**
  * Application use case: load the top podcasts list via the repository port.

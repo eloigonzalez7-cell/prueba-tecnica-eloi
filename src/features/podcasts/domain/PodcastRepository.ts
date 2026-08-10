@@ -1,5 +1,5 @@
-import type { Episode } from "./Episode";
-import type { Podcast } from "./Podcast";
+import type { Episode } from "@/features/podcasts/domain/Episode";
+import type { Podcast } from "@/features/podcasts/domain/Podcast";
 
 export type PodcastDetail = {
   readonly podcast: Podcast;

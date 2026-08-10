@@ -1,6 +1,6 @@
-import { Podcast } from "../domain/Podcast";
-import type { PodcastRepository } from "../domain/PodcastRepository";
-import { GetTopPodcasts } from "./GetTopPodcasts";
+import { GetTopPodcasts } from "@/features/podcasts/application/GetTopPodcasts";
+import { Podcast } from "@/features/podcasts/domain/Podcast";
+import type { PodcastRepository } from "@/features/podcasts/domain/PodcastRepository";
 
 describe("GetTopPodcasts", () => {
   it("delegates to the podcast repository with the abort signal", async () => {

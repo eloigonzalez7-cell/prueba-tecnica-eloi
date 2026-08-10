@@ -1,4 +1,4 @@
-import { toCorsSafeUrl } from "./corsProxy";
+import { toCorsSafeUrl } from "@/shared/http/corsProxy";
 
 describe("toCorsSafeUrl", () => {
   const itunesUrl =

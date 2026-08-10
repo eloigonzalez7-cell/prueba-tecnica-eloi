@@ -1,12 +1,12 @@
-import type { CacheStore } from "../domain/CacheStore";
-import { Episode } from "../domain/Episode";
-import { Podcast } from "../domain/Podcast";
+import type { CacheStore } from "@/features/podcasts/domain/CacheStore";
+import { Episode } from "@/features/podcasts/domain/Episode";
+import { Podcast } from "@/features/podcasts/domain/Podcast";
 import type {
   PodcastDetail,
   PodcastRepository,
-} from "../domain/PodcastRepository";
-import { CachedPodcastRepository } from "./CachedPodcastRepository";
-import { TOP_PODCASTS_CACHE_KEY } from "./cacheKeys";
+} from "@/features/podcasts/domain/PodcastRepository";
+import { CachedPodcastRepository } from "@/features/podcasts/infrastructure/CachedPodcastRepository";
+import { TOP_PODCASTS_CACHE_KEY } from "@/features/podcasts/infrastructure/cacheKeys";
 
 const images = { small: "s", medium: "m", large: "l" };
 
