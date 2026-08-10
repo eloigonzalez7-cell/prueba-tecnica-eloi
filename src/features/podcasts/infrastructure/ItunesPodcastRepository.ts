@@ -41,4 +41,8 @@ export class ItunesPodcastRepository implements PodcastRepository {
     const payload = await this.fetchJsonFn<LookupResponse>(url, { signal });
     return mapPodcastDetail(payload, podcastId);
   }
+
+  putPodcastDetail(_detail: PodcastDetail): void {
+    // Remote adapter has no client-side persistence.
+  }
 }

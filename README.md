@@ -62,9 +62,10 @@ Specs intercept iTunes traffic (dev proxy or AllOrigins) with fixtures under `cy
 ## Features
 
 - **Home** `/` — top 100 podcasts, live filter by title/author, count badge, 24h `localStorage` cache
-- **Podcast** `/podcast/:podcastId` — sidebar + episodes table, 24h cache; empty lookup description enriched from top-feed summary
-- **Episode** `/podcast/:podcastId/episode/:episodeId` — DOMPurify-sanitized HTML description + `<audio controls>`
+- **Podcast** `/podcast/:podcastId` — sidebar + episodes table, 24h cache; empty lookup description enriched from top-feed summary (enriched snapshot written back to cache)
+- **Episode** `/podcast/:podcastId/episode/:episodeId` — DOMPurify-sanitized HTML description + `<audio controls>` (lookup `limit=20` matches the brief sample URL)
 - **Chrome** — “Podcaster” header link → home; top-right loading spinner while fetching
+- Route-level **code splitting** (`React.lazy`) for the three pages
 - Visible **error + Retry** on failed loads (also logged to the console)
 - Clean URLs (React Router, no hash routing)
 - Semantic HTML + CSS Modules (native CSS only)

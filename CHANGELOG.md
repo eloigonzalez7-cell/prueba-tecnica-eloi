@@ -3,6 +3,21 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [1.1.0] - 2026-08-10
+
+### Documentation
+
+- update changelog for v1.0.0
+- update changelog for v1.1.0
+
+### Miscellaneous
+
+- upgrade to TypeScript 6 and ES2024
+- complete P2 hardening (cache write-back, lazy routes, lint)
+
+### Testing
+
+- harden UI coverage and load error UX
 ## [1.0.0] - 2026-08-10
 
 ### Documentation

@@ -23,4 +23,5 @@ Implement a versioned `CacheStore` port with a `LocalStorageCacheStore` adapter,
 
 - Fewer upstream calls and faster revisits
 - Stale data up to 24h (accepted by the brief)
-- Empty podcast descriptions from lookup are enriched at use-case level from the (often cached) top-100 summaries
+- Empty podcast descriptions from lookup are enriched at use-case level from the (often cached) top-100 summaries; the enriched detail is written back with `putPodcastDetail` so later visits skip the extra top-list read
+- Cache hits honour `AbortSignal` (throw `AbortError`) so abandoned navigations do not apply stale work

@@ -34,6 +34,12 @@ type DetailJson = {
   episodes: EpisodeJson[];
 };
 
+function throwIfAborted(signal?: AbortSignal): void {
+  if (signal?.aborted) {
+    throw new DOMException("The operation was aborted.", "AbortError");
+  }
+}
+
 function serializePodcast(podcast: Podcast): PodcastJson {
   return {
     id: podcast.id,
@@ -100,10 +106,12 @@ export class CachedPodcastRepository implements PodcastRepository {
   async getTopPodcasts(signal?: AbortSignal): Promise<Podcast[]> {
     const cached = this.cache.get<PodcastJson[]>(TOP_PODCASTS_CACHE_KEY);
     if (cached) {
+      throwIfAborted(signal);
       return cached.map(revivePodcast);
     }
 
     const podcasts = await this.inner.getTopPodcasts(signal);
+    throwIfAborted(signal);
     this.cache.set(
       TOP_PODCASTS_CACHE_KEY,
       podcasts.map(serializePodcast),
@@ -119,11 +127,19 @@ export class CachedPodcastRepository implements PodcastRepository {
     const key = podcastDetailCacheKey(podcastId);
     const cached = this.cache.get<DetailJson>(key);
     if (cached) {
+      throwIfAborted(signal);
       return reviveDetail(cached);
     }
 
     const detail = await this.inner.getPodcastDetail(podcastId, signal);
+    throwIfAborted(signal);
     this.cache.set(key, serializeDetail(detail), this.ttlMs);
     return detail;
+  }
+
+  putPodcastDetail(detail: PodcastDetail): void {
+    const key = podcastDetailCacheKey(detail.podcast.id);
+    this.cache.set(key, serializeDetail(detail), this.ttlMs);
+    this.inner.putPodcastDetail(detail);
   }
 }
