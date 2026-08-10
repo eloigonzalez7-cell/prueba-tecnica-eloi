@@ -3,6 +3,24 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [1.1.0] - 2026-08-10
+
+### Features
+
+- persist enriched podcast descriptions in the 24h detail cache (`putPodcastDetail`)
+- route-level code splitting with `React.lazy` / `Suspense`
+- visible load error banner with Retry on home, podcast, and episode pages
+
+### Testing
+
+- harden UI coverage and load error UX (RTL + Cypress filter/spinner)
+
+### Chores
+
+- upgrade to TypeScript 6 and ES2024
+- complete P2 hardening (AbortSignal on cache hits, typed ESLint, drop trivial smoke test)
+- move composition root to `src/app/` and run `typecheck` in CI
+
 ## [1.0.0] - 2026-08-10
 
 ### Documentation
