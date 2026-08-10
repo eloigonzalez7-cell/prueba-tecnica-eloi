@@ -3,6 +3,11 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [1.2.2] - 2026-08-10
+
+### Bug Fixes
+
+- linkify bare URLs in podcast sidebar descriptions
 ## [1.2.1] - 2026-08-10
 
 ### Documentation
