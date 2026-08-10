@@ -3,6 +3,19 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [1.2.0] - 2026-08-10
+
+### Bug Fixes
+
+- linkify bare URLs in episode descriptions
+
+### Documentation
+
+- align milestone tags with v1.1.0
+
+### Testing
+
+- expand Cypress into a structured e2e suite
 ## [1.1.0] - 2026-08-10
 
 ### Documentation
