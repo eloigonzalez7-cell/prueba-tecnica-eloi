@@ -3,10 +3,8 @@ import styles from "./AppLayout.module.css";
 
 export function AppLayout() {
   return (
-    <div className={styles.shell}>
-      <main className={styles.main}>
-        <Outlet />
-      </main>
-    </div>
+    <main className={styles.main}>
+      <Outlet />
+    </main>
   );
 }
