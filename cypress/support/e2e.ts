@@ -1,1 +1,5 @@
-// Cypress support entry for e2e specs (commands, global hooks).
+import "./commands";
+
+beforeEach(() => {
+  cy.clearAllLocalStorage();
+});

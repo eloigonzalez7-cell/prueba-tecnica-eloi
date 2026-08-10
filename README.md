@@ -38,26 +38,31 @@ npm run preview
 | `npm run preview` | Serve `dist/` on port 4173 |
 | `npm test` | Unit tests (Jest) |
 | `npm run test:watch` | Jest watch mode |
-| `npm run test:e2e` | Cypress e2e (expects app on `http://localhost:3000`) |
-| `npm run cypress:open` | Cypress interactive runner |
-| `npm run smoke` | Serve production build + Cypress against `:4173` |
+| `npm run test:e2e` | Cypress e2e suite against dev (`http://localhost:3000`) |
+| `npm run cypress:open` | Cypress interactive runner (best for exploring specs) |
+| `npm run smoke` | Same Cypress suite against production preview (`:4173`) |
 | `npm run lint` | ESLint (`src/**/*.{ts,tsx}`) |
 | `npm run typecheck` | TypeScript `tsc --noEmit` |
 | `npm run changelog` | Regenerate `CHANGELOG.md` with local git-cliff |
 
 ### E2E tips
 
+Cypress is the **full e2e suite** under `cypress/e2e/` (home filter/error, navigation chrome, podcast/episode flow, 24h cache).  
+`npm run smoke` is not a different kind of test: it rebuilds/serves `dist/` and runs **the same Cypress specs** against production (`AllOrigins` URLs still match the intercepts).
+
 ```bash
 # Dev e2e (two terminals)
 npm start
 npm run test:e2e
+# or interactively:
+npm run cypress:open
 
-# Production smoke (build + preview + Cypress)
+# Production smoke (build + preview + same Cypress suite)
 npm run build
 npm run smoke
 ```
 
-Specs intercept iTunes traffic (dev proxy or AllOrigins) with fixtures under `cypress/fixtures/`.
+Specs use custom commands (`cy.stubItunesApis`) and fixtures under `cypress/fixtures/` so CI never depends on live Apple/AllOrigins.
 
 ## Features
 
