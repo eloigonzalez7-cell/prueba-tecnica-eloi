@@ -24,9 +24,9 @@ Delivery style: **micro-PRs** mapped to steps `S00`–`S37`.
 | E6 | Episode detail + safe HTML | S29–S30 | Done (`v0.5.0-episode`) |
 | E7 | App chrome (header + nav loading) | S31–S32 | Done (`v0.6.0-chrome`) |
 | E8 | Cypress e2e + smoke | S33–S35 | Done (`v0.7.0-tests`; suite expanded on `v1.1.0` / `v1.2.0`) |
-| E9 | Delivery docs (README, ADRs, traceability) | S36–S37 | Done (`v1.0.0`; milestones through `v1.2.0`) |
+| E9 | Delivery docs (README, ADRs, traceability) | S36–S37 | Done (`v1.0.0`; milestones through `v1.2.2`) |
 
-Current delivery tag: **`v1.2.1`** (patch: PodcastDetailPage RTL coverage; previous minor `v1.2.0` = Cypress suite + episode URL linkify).
+Current delivery tag: **`v1.2.2`** (patch: podcast sidebar URL linkify; `v1.2.1` = detail RTL; `v1.2.0` = Cypress suite + episode URL linkify).
 
 ## Brief requirements → epic mapping
 
