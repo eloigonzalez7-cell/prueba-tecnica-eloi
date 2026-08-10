@@ -3,6 +3,17 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [0.4.0-detail] - 2026-08-10
+
+### Documentation
+
+- update changelog for v0.3.0-home
+
+### Features
+
+- **podcasts:** add get podcast detail use case
+- **podcast:** add podcast detail sidebar
+- **podcast:** list episodes with date and duration
 ## [0.3.0-home] - 2026-08-10
 
 ### Documentation
