@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { AppLayout } from "@/app/AppLayout";
-import { EpisodePlaceholder } from "@/app/PlaceholderPages";
+import { EpisodeDetailPage } from "@/features/podcasts/ui/EpisodeDetailPage";
 import { HomePage } from "@/features/podcasts/ui/HomePage";
 import { PodcastDetailPage } from "@/features/podcasts/ui/PodcastDetailPage";
 
@@ -12,7 +12,7 @@ export function AppRouter() {
         <Route path="podcast/:podcastId" element={<PodcastDetailPage />} />
         <Route
           path="podcast/:podcastId/episode/:episodeId"
-          element={<EpisodePlaceholder />}
+          element={<EpisodeDetailPage />}
         />
       </Route>
     </Routes>
