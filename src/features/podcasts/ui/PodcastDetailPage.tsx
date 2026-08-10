@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSyncAppLoading } from "@/app/loading/AppLoadingContext";
 import type { PodcastDetail } from "@/features/podcasts/domain/PodcastRepository";
 import { EpisodesTable } from "@/features/podcasts/ui/EpisodesTable";
 import { getPodcastDetail } from "@/features/podcasts/ui/podcastDependencies";
@@ -9,7 +10,8 @@ import styles from "@/features/podcasts/ui/PodcastDetailPage.module.css";
 export function PodcastDetailPage() {
   const { podcastId } = useParams<{ podcastId: string }>();
   const [detail, setDetail] = useState<PodcastDetail | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(Boolean(podcastId));
+  useSyncAppLoading(loading);
 
   useEffect(() => {
     if (!podcastId) {
