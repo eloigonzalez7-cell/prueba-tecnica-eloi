@@ -3,6 +3,21 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [0.3.0-home] - 2026-08-10
+
+### Documentation
+
+- update changelog for v0.2.1-data
+
+### Features
+
+- **podcasts:** add get top podcasts use case
+- **home:** render top podcasts grid
+- **home:** add live filter with semantic markup
+
+### Miscellaneous
+
+- add path aliases for src imports
 ## [0.2.1-data] - 2026-08-10
 
 ### Bug Fixes
