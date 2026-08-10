@@ -23,7 +23,7 @@ Maps the Inditex frontend challenge requirements to backlog epics and implementa
 | Loading indicator top-right on navigation | E7 | `AppLoadingContext` + header spinner |
 | AllOrigins for CORS | E3 | Prod path; dev uses Webpack proxy |
 | Console errors + visible retry | all | `console.error` plus in-page alert + Retry |
-| Unit + e2e tests | E8 | Jest + Cypress (+ prod smoke) |
+| Unit + e2e tests | E8 | Jest + Cypress suite (`test:e2e`); `smoke` re-runs Cypress against prod build |
 | Changelog from Conventional Commits | E1 | git-cliff + CI check |
 
 See also:
