@@ -1,5 +1,5 @@
-import { Podcast } from "../domain/Podcast";
-import { FilterPodcasts } from "./FilterPodcasts";
+import { FilterPodcasts } from "@/features/podcasts/application/FilterPodcasts";
+import { Podcast } from "@/features/podcasts/domain/Podcast";
 
 const images = { small: "s", medium: "m", large: "l" };
 

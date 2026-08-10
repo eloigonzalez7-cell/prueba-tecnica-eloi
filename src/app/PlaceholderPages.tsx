@@ -4,16 +4,20 @@ export function PodcastPlaceholder() {
   const { podcastId } = useParams<{ podcastId: string }>();
 
   return (
-    <>
+    <section>
       <h1>Podcast detail</h1>
       <p>Podcast ID: {podcastId}</p>
-      <p>
-        <Link to={`/podcast/${podcastId}/episode/456`}>Open sample episode</Link>
-      </p>
-      <p>
-        <Link to="/">Back to home</Link>
-      </p>
-    </>
+      <nav>
+        <p>
+          <Link to={`/podcast/${podcastId}/episode/456`}>
+            Open sample episode
+          </Link>
+        </p>
+        <p>
+          <Link to="/">Back to home</Link>
+        </p>
+      </nav>
+    </section>
   );
 }
 
@@ -24,13 +28,15 @@ export function EpisodePlaceholder() {
   }>();
 
   return (
-    <>
+    <section>
       <h1>Episode detail</h1>
       <p>Podcast ID: {podcastId}</p>
       <p>Episode ID: {episodeId}</p>
-      <p>
-        <Link to={`/podcast/${podcastId}`}>Back to podcast</Link>
-      </p>
-    </>
+      <nav>
+        <p>
+          <Link to={`/podcast/${podcastId}`}>Back to podcast</Link>
+        </p>
+      </nav>
+    </section>
   );
 }

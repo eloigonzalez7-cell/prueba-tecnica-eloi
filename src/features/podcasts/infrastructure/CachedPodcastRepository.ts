@@ -1,12 +1,15 @@
-import type { CacheStore } from "../domain/CacheStore";
-import { Episode } from "../domain/Episode";
-import { Podcast, type PodcastImages } from "../domain/Podcast";
+import type { CacheStore } from "@/features/podcasts/domain/CacheStore";
+import { Episode } from "@/features/podcasts/domain/Episode";
+import { Podcast, type PodcastImages } from "@/features/podcasts/domain/Podcast";
 import type {
   PodcastDetail,
   PodcastRepository,
-} from "../domain/PodcastRepository";
-import { ONE_DAY_MS } from "./cacheTtl";
-import { podcastDetailCacheKey, TOP_PODCASTS_CACHE_KEY } from "./cacheKeys";
+} from "@/features/podcasts/domain/PodcastRepository";
+import {
+  podcastDetailCacheKey,
+  TOP_PODCASTS_CACHE_KEY,
+} from "@/features/podcasts/infrastructure/cacheKeys";
+import { ONE_DAY_MS } from "@/features/podcasts/infrastructure/cacheTtl";
 
 type PodcastJson = {
   id: string;

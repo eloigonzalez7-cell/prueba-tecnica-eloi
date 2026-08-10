@@ -1,6 +1,6 @@
-import type { CacheStore } from "./CacheStore";
-import type { PodcastRepository } from "./PodcastRepository";
-import { Podcast } from "./Podcast";
+import type { CacheStore } from "@/features/podcasts/domain/CacheStore";
+import { Podcast } from "@/features/podcasts/domain/Podcast";
+import type { PodcastRepository } from "@/features/podcasts/domain/PodcastRepository";
 
 describe("domain ports", () => {
   it("allows a fake PodcastRepository to satisfy the port", async () => {

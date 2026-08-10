@@ -1,5 +1,5 @@
-import { Episode } from "../domain/Episode";
-import { Podcast, type PodcastImages } from "../domain/Podcast";
+import { Episode } from "@/features/podcasts/domain/Episode";
+import { Podcast, type PodcastImages } from "@/features/podcasts/domain/Podcast";
 
 type LabelNode = { label?: string };
 type ImageNode = LabelNode & { attributes?: { height?: string } };
