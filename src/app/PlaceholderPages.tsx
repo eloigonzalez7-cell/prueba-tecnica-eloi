@@ -1,17 +1,5 @@
 import { Link, useParams } from "react-router-dom";
 
-export function HomePlaceholder() {
-  return (
-    <>
-      <h1>Podcaster</h1>
-      <p>Home placeholder</p>
-      <p>
-        <Link to="/podcast/123">Open sample podcast</Link>
-      </p>
-    </>
-  );
-}
-
 export function PodcastPlaceholder() {
   const { podcastId } = useParams<{ podcastId: string }>();
 
