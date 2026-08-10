@@ -1,0 +1,22 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.status {
+  margin: 0;
+  grid-column: 1 / -1;
+  color: var(--color-text-muted);
+}
+
+.content {
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+}
