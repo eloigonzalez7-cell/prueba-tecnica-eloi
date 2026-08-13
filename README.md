@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml/badge.svg)](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml)
 
-**Current release:** [`v1.2.3`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.2.3) — see [CHANGELOG.md](CHANGELOG.md).
+**Current release:** [`v1.2.4`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.2.4) — see [CHANGELOG.md](CHANGELOG.md).
 
 Single-page application to browse Apple’s top music podcasts, open podcast details, and play episodes. Built for the **Inditex frontend technical challenge**.
 

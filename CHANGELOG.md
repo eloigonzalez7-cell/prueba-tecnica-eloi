@@ -3,6 +3,11 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [1.2.4] - 2026-08-13
+
+### Testing
+
+- **e2e:** wait for podcast sidebar instead of a single lookup
 ## [1.2.3] - 2026-08-13
 
 ### Documentation

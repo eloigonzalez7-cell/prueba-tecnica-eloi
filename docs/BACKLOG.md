@@ -25,11 +25,11 @@ Delivery style: **micro-PRs** mapped to steps `S00`–`S41`.
 | E7 | App chrome (header + nav loading) | S31–S32 | Done (`v0.6.0-chrome`) |
 | E8 | Cypress e2e + smoke | S33–S35 | Done (`v0.7.0-tests`; suite expanded on `v1.1.0` / `v1.2.0`) |
 | E9 | Delivery docs (README, ADRs, traceability) | S36–S37 | Done (`v1.0.0`; milestones through `v1.2.2`) |
-| E10 | GFT review: reliable Cypress e2e | S38 | Next (`v1.2.4`) |
+| E10 | GFT review: reliable Cypress e2e | S38 | Done (`v1.2.4`) |
 | E11 | GFT review: detail loading until data settles | S39 | Next (`v1.2.5`) |
 | E12 | GFT review NTH: paginated + virtualized home list | S40–S41 | Later (`v1.3.0` / `v1.3.1`) |
 
-Current delivery tag: **`v1.2.3`** (GFT review backlog). Next: `v1.2.4` (E10) → `v1.2.5` (E11) → `v1.3.0` / `v1.3.1` (E12).
+Current delivery tag: **`v1.2.4`** (e2e waits on the real sidebar; no single `@podcastLookup`). Next: `v1.2.5` (E11) → `v1.3.0` / `v1.3.1` (E12).
 
 ## GFT technical review (2026-08)
 
