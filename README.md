@@ -88,7 +88,7 @@ src/
   shared/              # http, html sanitize, global tokens
   features/podcasts/
     domain/            # Podcast, Episode, ports (no React / no fetch)
-    application/       # use cases (GetTopPodcasts, FilterPodcasts, GetPodcastDetail)
+    application/       # use cases (GetTopPodcasts, FilterPodcasts, PaginatePodcasts, GetPodcastDetail)
     infrastructure/    # iTunes adapters, cache decorator, mappers
     ui/                # React pages and presentational components
 ```
@@ -124,6 +124,7 @@ Rules of thumb:
 | [docs/adr/0002-hexagonal.md](docs/adr/0002-hexagonal.md) | ADR: hexagonal feature modules |
 | [docs/adr/0003-caching.md](docs/adr/0003-caching.md) | ADR: 24h localStorage cache |
 | [docs/adr/0004-testing-strategy.md](docs/adr/0004-testing-strategy.md) | ADR: Jest + Cypress |
+| [docs/adr/0005-list-pagination.md](docs/adr/0005-list-pagination.md) | ADR: application-layer list pagination |
 | [CHANGELOG.md](CHANGELOG.md) | Generated from Conventional Commits + tags |
 
 ## Milestone tags

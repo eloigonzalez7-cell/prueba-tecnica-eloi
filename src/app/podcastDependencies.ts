@@ -1,6 +1,7 @@
 import { FilterPodcasts } from "@/features/podcasts/application/FilterPodcasts";
 import { GetPodcastDetail } from "@/features/podcasts/application/GetPodcastDetail";
 import { GetTopPodcasts } from "@/features/podcasts/application/GetTopPodcasts";
+import { PaginatePodcasts } from "@/features/podcasts/application/PaginatePodcasts";
 import { CachedPodcastRepository } from "@/features/podcasts/infrastructure/CachedPodcastRepository";
 import { ItunesPodcastRepository } from "@/features/podcasts/infrastructure/ItunesPodcastRepository";
 import { LocalStorageCacheStore } from "@/features/podcasts/infrastructure/LocalStorageCacheStore";
@@ -15,3 +16,4 @@ const podcastRepository = new CachedPodcastRepository(
 export const getTopPodcasts = new GetTopPodcasts(podcastRepository);
 export const getPodcastDetail = new GetPodcastDetail(podcastRepository);
 export const filterPodcasts = new FilterPodcasts();
+export const paginatePodcasts = new PaginatePodcasts();

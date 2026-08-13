@@ -37,3 +37,4 @@ See also:
 - [adr/0002-hexagonal.md](./adr/0002-hexagonal.md)
 - [adr/0003-caching.md](./adr/0003-caching.md)
 - [adr/0004-testing-strategy.md](./adr/0004-testing-strategy.md)
+- [adr/0005-list-pagination.md](./adr/0005-list-pagination.md)
