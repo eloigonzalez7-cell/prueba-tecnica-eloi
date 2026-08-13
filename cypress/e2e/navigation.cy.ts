@@ -6,7 +6,10 @@ describe("Navigation chrome", () => {
 
     cy.contains("a", "The Joe Budden Podcast").click();
     cy.get('[aria-label="Loading"]').should("be.visible");
-    cy.wait("@podcastLookup");
+    cy.get('aside[aria-label="Podcast summary"]').should(
+      "contain",
+      "The Joe Budden Podcast",
+    );
     cy.url().should("include", "/podcast/1535809341");
     cy.get('[aria-label="Loading"]').should("not.exist");
   });
@@ -14,7 +17,10 @@ describe("Navigation chrome", () => {
   it("returns home when clicking the Podcaster brand link", () => {
     cy.stubItunesApis();
     cy.visit("/podcast/1535809341");
-    cy.wait("@podcastLookup");
+    cy.get('aside[aria-label="Podcast summary"]').should(
+      "contain",
+      "The Joe Budden Podcast",
+    );
 
     cy.contains("a", "Podcaster").click();
     cy.url().should("eq", `${Cypress.config("baseUrl")}/`);
