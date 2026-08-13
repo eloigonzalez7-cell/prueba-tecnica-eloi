@@ -29,7 +29,7 @@ Delivery style: **micro-PRs** mapped to steps `S00`–`S41`.
 | E11 | GFT review: detail loading until data settles | S39 | Next (`v1.2.5`) |
 | E12 | GFT review NTH: paginated + virtualized home list | S40–S41 | Later (`v1.3.0` / `v1.3.1`) |
 
-Current delivery tag: **`v1.2.2`**. Review-response line: `v1.2.3` (this planning docs) → `v1.2.4` (E10) → `v1.2.5` (E11) → `v1.3.0` / `v1.3.1` (E12).
+Current delivery tag: **`v1.2.3`** (GFT review backlog). Next: `v1.2.4` (E10) → `v1.2.5` (E11) → `v1.3.0` / `v1.3.1` (E12).
 
 ## GFT technical review (2026-08)
 

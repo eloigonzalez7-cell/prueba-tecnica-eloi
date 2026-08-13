@@ -3,6 +3,12 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [1.2.3] - 2026-08-13
+
+### Documentation
+
+- **review:** capture GFT technical feedback
+- **review:** capture GFT technical feedback (#54)
 ## [1.2.2] - 2026-08-10
 
 ### Bug Fixes
