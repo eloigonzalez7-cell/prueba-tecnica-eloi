@@ -1,7 +1,7 @@
 # Backlog
 
 Thin product backlog for the Podcaster SPA (Inditex frontend challenge).  
-Delivery style: **micro-PRs** mapped to steps `S00`–`S37`.
+Delivery style: **micro-PRs** mapped to steps `S00`–`S41`.
 
 ## Status legend
 
@@ -25,8 +25,22 @@ Delivery style: **micro-PRs** mapped to steps `S00`–`S37`.
 | E7 | App chrome (header + nav loading) | S31–S32 | Done (`v0.6.0-chrome`) |
 | E8 | Cypress e2e + smoke | S33–S35 | Done (`v0.7.0-tests`; suite expanded on `v1.1.0` / `v1.2.0`) |
 | E9 | Delivery docs (README, ADRs, traceability) | S36–S37 | Done (`v1.0.0`; milestones through `v1.2.2`) |
+| E10 | GFT review: reliable Cypress e2e | S38 | Next (`v1.2.4`) |
+| E11 | GFT review: detail loading until data settles | S39 | Next (`v1.2.5`) |
+| E12 | GFT review NTH: paginated + virtualized home list | S40–S41 | Later (`v1.3.0` / `v1.3.1`) |
 
-Current delivery tag: **`v1.2.2`** (patch: podcast sidebar URL linkify; `v1.2.1` = detail RTL; `v1.2.0` = Cypress suite + episode URL linkify).
+Current delivery tag: **`v1.2.2`**. Review-response line: `v1.2.3` (this planning docs) → `v1.2.4` (E10) → `v1.2.5` (E11) → `v1.3.0` / `v1.3.1` (E12).
+
+## GFT technical review (2026-08)
+
+Source: Inditex/GFT reviewer via Luis Miguel Merino. Base submission was accepted; these slices make the demo client-ready.
+
+| Step | Slice | Target tag |
+|------|-------|------------|
+| S38 | Reproduce and fix 2 failing e2e specs; assert detail skeleton vs premature `Podcast not found` | `v1.2.4` |
+| S39 | Keep detail/episode skeleton until load settles (abort/`finally` race + Suspense fallback); never flash `not found` on a cold cache | `v1.2.5` |
+| S40 | Application-layer pagination: page size 10/25/50/100 + pager; `PagedResult` over the cached top 100 (iTunes RSS is a single feed) | `v1.3.0` |
+| S41 | Virtualize the home grid for the current page so page size 100 does not mount 100 image cards | `v1.3.1` |
 
 ## Brief requirements → epic mapping
 
@@ -41,6 +55,10 @@ Current delivery tag: **`v1.2.2`** (patch: podcast sidebar URL linkify; `v1.2.1`
 | Header link home + top-right loading on navigation | E7 |
 | Public repo + README + progressive tags | E0, E1, E9 |
 | Changelog from Conventional Commits + tags | E1 |
+| Stable e2e (GFT review) | E10 |
+| Detail skeleton until cache/network resolves (GFT review) | E11 |
+| NTH: list pagination + page size (GFT review) | E12 |
+| Virtualized home grid (page size 100) | E12 |
 
 ## Definition of Done (per story)
 

@@ -6,7 +6,7 @@ Maps the Inditex frontend challenge requirements to backlog epics and implementa
 |-------------|------|-------|
 | SPA with client-side navigation | E0 | React Router `BrowserRouter` |
 | Dev unminified / prod minified | E0 | Webpack dual configs |
-| Public repo + incremental commits + tags | E0, E1, E9 | Milestone tags through `v1.2.2` |
+| Public repo + incremental commits + tags | E0, E1, E9 | Milestone tags through `v1.2.2`; review line `v1.2.3`–`v1.3.1` |
 | README for both modes | E9 | [README.md](../README.md) |
 | Clean URLs (no hash) | E0 | `historyApiFallback` + Router |
 | Home top 100 podcasts | E3, E4 | Apple RSS via repository |
@@ -25,6 +25,10 @@ Maps the Inditex frontend challenge requirements to backlog epics and implementa
 | Console errors + visible retry | all | `console.error` plus in-page alert + Retry |
 | Unit + e2e tests | E8 | Jest + Cypress suite (`test:e2e`); `smoke` re-runs Cypress against prod build |
 | Changelog from Conventional Commits | E1 | git-cliff + CI check |
+| Stable e2e (GFT review) | E10 | Fix 2 failing Cypress specs; assert skeleton instead of premature `Podcast not found` (`v1.2.4`) |
+| Detail loading until resolve (GFT review) | E11 | Skeleton while in flight / aborted; `Podcast not found` only after a settled empty result (`v1.2.5`) |
+| NTH: list pagination + page size (GFT review) | E12 | Application-layer `PagedResult` (iTunes top RSS is not paginated); UI page size 10/25/50/100 (`v1.3.0`) |
+| Virtualized home grid | E12 | Window the current page so page size 100 does not mount 100 cards (`v1.3.1`) |
 
 See also:
 
