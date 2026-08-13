@@ -12,4 +12,10 @@ module.exports = merge(common, {
   optimization: {
     minimize: true,
   },
+  performance: {
+    // React + Router + DOMPurify in the shell sits just over Webpack's 244 KiB hint.
+    hints: "warning",
+    maxAssetSize: 512_000,
+    maxEntrypointSize: 512_000,
+  },
 });

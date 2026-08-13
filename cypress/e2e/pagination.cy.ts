@@ -40,12 +40,12 @@ describe("Home pagination", () => {
 
     cy.get("#page-size").select("10");
     cy.contains("Page 1 of 2").should("be.visible");
-    cy.contains("a", "Show 1").should("be.visible");
-    cy.contains("a", "Show 11").should("not.exist");
+    cy.get('a[aria-label="Show 1 by Author 1"]').should("be.visible");
+    cy.get('a[aria-label="Show 11 by Author 11"]').should("not.exist");
 
     cy.contains("button", "Next").click();
     cy.contains("Page 2 of 2").should("be.visible");
-    cy.contains("a", "Show 11").should("be.visible");
-    cy.contains("a", "Show 1").should("not.exist");
+    cy.get('a[aria-label="Show 11 by Author 11"]').should("be.visible");
+    cy.get('a[aria-label="Show 1 by Author 1"]').should("not.exist");
   });
 });

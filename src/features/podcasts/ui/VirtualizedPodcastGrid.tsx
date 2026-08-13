@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Podcast } from "@/features/podcasts/domain/Podcast";
 import { PodcastCard } from "@/features/podcasts/ui/PodcastCard";
 import styles from "@/features/podcasts/ui/HomePage.module.css";
@@ -25,6 +25,12 @@ type VirtualizedPodcastGridProps = {
   readonly podcasts: readonly Podcast[];
 };
 
+type Viewport = {
+  readonly width: number;
+  readonly height: number;
+  readonly gridTop: number;
+};
+
 function visibleRowRange(
   itemCount: number,
   columns: number,
@@ -49,37 +55,36 @@ function visibleRowRange(
  */
 export function VirtualizedPodcastGrid({ podcasts }: VirtualizedPodcastGridProps) {
   const listRef = useRef<HTMLUListElement>(null);
-  const [columns, setColumns] = useState(() =>
-    columnsForViewportWidth(window.innerWidth),
-  );
-  const [range, setRange] = useState(() =>
-    visibleRowRange(
-      podcasts.length,
-      columnsForViewportWidth(window.innerWidth),
-      0,
-      window.innerHeight,
-    ),
-  );
-
-  const updateWindow = useCallback(() => {
-    const cols = columnsForViewportWidth(window.innerWidth);
-    setColumns(cols);
-    const top = listRef.current?.getBoundingClientRect().top ?? 0;
-    setRange(
-      visibleRowRange(podcasts.length, cols, top, window.innerHeight),
-    );
-  }, [podcasts.length]);
+  const [viewport, setViewport] = useState<Viewport>(() => ({
+    width: window.innerWidth,
+    height: window.innerHeight,
+    gridTop: 0,
+  }));
 
   useEffect(() => {
-    updateWindow();
-    window.addEventListener("scroll", updateWindow, { passive: true });
-    window.addEventListener("resize", updateWindow);
-    return () => {
-      window.removeEventListener("scroll", updateWindow);
-      window.removeEventListener("resize", updateWindow);
+    const syncFromWindow = () => {
+      setViewport({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        gridTop: listRef.current?.getBoundingClientRect().top ?? 0,
+      });
     };
-  }, [updateWindow]);
 
+    window.addEventListener("scroll", syncFromWindow, { passive: true });
+    window.addEventListener("resize", syncFromWindow);
+    return () => {
+      window.removeEventListener("scroll", syncFromWindow);
+      window.removeEventListener("resize", syncFromWindow);
+    };
+  }, []);
+
+  const columns = columnsForViewportWidth(viewport.width);
+  const range = visibleRowRange(
+    podcasts.length,
+    columns,
+    viewport.gridTop,
+    viewport.height,
+  );
   const startIndex = range.startRow * columns;
   const endIndex = Math.min(podcasts.length, range.endRow * columns);
   const visible = podcasts.slice(startIndex, endIndex);

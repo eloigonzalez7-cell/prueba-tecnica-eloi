@@ -43,6 +43,7 @@ npm run preview
 | `npm run test:e2e` | Cypress e2e suite against dev (`http://localhost:3000`) |
 | `npm run cypress:open` | Cypress interactive runner (best for exploring specs) |
 | `npm run smoke` | Same Cypress suite against production preview (`:4173`) |
+| `npm run cypress:install` | Download the Cypress binary (needed if `npm ci` skipped install scripts) |
 | `npm run lint` | ESLint (`src/**/*.{ts,tsx}`) |
 | `npm run typecheck` | TypeScript `tsc --noEmit` |
 | `npm run changelog` | Regenerate `CHANGELOG.md` with local git-cliff |
