@@ -1,5 +1,6 @@
-import { useLayoutEffect } from "react";
+import { Suspense, useLayoutEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { RouteFallback } from "@/app/RouteFallback";
 import { useAppLoading } from "@/app/loading/AppLoadingContext";
 import styles from "@/app/AppLayout.module.css";
 
@@ -26,7 +27,9 @@ export function AppLayout() {
         </nav>
       </header>
       <main className={styles.main}>
-        <Outlet />
+        <Suspense fallback={<RouteFallback />}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );
