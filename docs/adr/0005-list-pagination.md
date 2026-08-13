@@ -20,5 +20,5 @@ Live filter by title/author still needs the full cached list in memory.
 ## Consequences
 
 - Honest about iTunes: no remote pagination, fewer round-trips, filter stays live.
-- Page size 100 can still mount many image cards; virtualization (E12 / `v1.3.1`) windows the current page.
+- Page size 100 can still mount many image cards; the home grid is windowed in UI (`VirtualizedPodcastGrid`, `v1.3.1`) so only viewport rows (plus overscan) are in the DOM.
 - Swapping in a real paginated API later only changes the repository adapter.

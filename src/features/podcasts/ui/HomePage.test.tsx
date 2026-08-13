@@ -172,6 +172,31 @@ describe("HomePage", () => {
       screen.queryByRole("link", { name: "Show 1 by Author 1" }),
     ).not.toBeInTheDocument();
   });
+
+  it("virtualizes the current page so 100 cards are not all mounted", async () => {
+    mockGetTopPodcastsExecute.mockResolvedValue(
+      Array.from({ length: 100 }, (_, index) =>
+        podcast(String(index + 1), `Show ${index + 1}`, `Author ${index + 1}`),
+      ),
+    );
+
+    render(
+      <MemoryRouter>
+        <AppLoadingProvider>
+          <HomePage />
+        </AppLoadingProvider>
+      </MemoryRouter>,
+    );
+
+    expect(await screen.findByRole("status")).toHaveTextContent("100");
+    fireEvent.change(screen.getByLabelText("Per page"), {
+      target: { value: "100" },
+    });
+
+    const cards = screen.getAllByRole("link");
+    expect(cards.length).toBeGreaterThan(0);
+    expect(cards.length).toBeLessThan(100);
+  });
 });
 
 describe("AppLayout loading cue", () => {
