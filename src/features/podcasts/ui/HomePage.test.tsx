@@ -14,12 +14,16 @@ jest.mock("@/app/podcastDependencies", () => {
   const { FilterPodcasts } = jest.requireActual(
     "@/features/podcasts/application/FilterPodcasts",
   ) as typeof import("@/features/podcasts/application/FilterPodcasts");
+  const { PaginatePodcasts } = jest.requireActual(
+    "@/features/podcasts/application/PaginatePodcasts",
+  ) as typeof import("@/features/podcasts/application/PaginatePodcasts");
 
   return {
     getTopPodcasts: {
       execute: (...args: unknown[]) => mockGetTopPodcastsExecute(...args),
     },
     filterPodcasts: new FilterPodcasts(),
+    paginatePodcasts: new PaginatePodcasts(),
   };
 });
 
@@ -125,6 +129,48 @@ describe("HomePage", () => {
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();
 
     consoleError.mockRestore();
+  });
+
+  it("pages the filtered list from the application use case", async () => {
+    mockGetTopPodcastsExecute.mockResolvedValue(
+      Array.from({ length: 12 }, (_, index) =>
+        podcast(String(index + 1), `Show ${index + 1}`, `Author ${index + 1}`),
+      ),
+    );
+
+    render(
+      <MemoryRouter>
+        <AppLoadingProvider>
+          <HomePage />
+        </AppLoadingProvider>
+      </MemoryRouter>,
+    );
+
+    expect(await screen.findByRole("status")).toHaveTextContent("12");
+    expect(screen.getByLabelText("Per page")).toHaveValue("25");
+    expect(screen.getByText("Page 1 of 1")).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText("Per page"), {
+      target: { value: "10" },
+    });
+
+    expect(screen.getByText("Page 1 of 2")).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Show 1 by Author 1" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("link", { name: "Show 11 by Author 11" }),
+    ).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+
+    expect(screen.getByText("Page 2 of 2")).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Show 11 by Author 11" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("link", { name: "Show 1 by Author 1" }),
+    ).not.toBeInTheDocument();
   });
 });
 
