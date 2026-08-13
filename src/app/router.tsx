@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AppLayout } from "@/app/AppLayout";
 
@@ -20,17 +20,15 @@ const EpisodeDetailPage = lazy(() =>
 
 export function AppRouter() {
   return (
-    <Suspense fallback={null}>
-      <Routes>
-        <Route path="/" element={<AppLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="podcast/:podcastId" element={<PodcastDetailPage />} />
-          <Route
-            path="podcast/:podcastId/episode/:episodeId"
-            element={<EpisodeDetailPage />}
-          />
-        </Route>
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<AppLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="podcast/:podcastId" element={<PodcastDetailPage />} />
+        <Route
+          path="podcast/:podcastId/episode/:episodeId"
+          element={<EpisodeDetailPage />}
+        />
+      </Route>
+    </Routes>
   );
 }

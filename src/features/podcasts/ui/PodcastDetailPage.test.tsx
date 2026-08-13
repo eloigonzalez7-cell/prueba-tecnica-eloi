@@ -60,6 +60,28 @@ describe("PodcastDetailPage", () => {
     mockGetPodcastDetailExecute.mockReset();
   });
 
+  it("shows a skeleton instead of not-found while the detail is loading", async () => {
+    let resolveDetail!: (value: PodcastDetail) => void;
+    mockGetPodcastDetailExecute.mockImplementation(
+      () =>
+        new Promise<PodcastDetail>((resolve) => {
+          resolveDetail = resolve;
+        }),
+    );
+
+    renderDetailPage();
+
+    expect(screen.getByText("Loading podcast…")).toBeInTheDocument();
+    expect(screen.queryByText("Podcast not found.")).not.toBeInTheDocument();
+
+    resolveDetail(detailFixture());
+
+    expect(
+      await screen.findByRole("complementary", { name: "Podcast summary" }),
+    ).toBeInTheDocument();
+    expect(screen.queryByText("Podcast not found.")).not.toBeInTheDocument();
+  });
+
   it("renders sidebar and episodes for a podcast", async () => {
     mockGetPodcastDetailExecute.mockResolvedValue(detailFixture());
 

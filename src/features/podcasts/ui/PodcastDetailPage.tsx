@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSyncAppLoading } from "@/app/loading/AppLoadingContext";
 import { getPodcastDetail } from "@/app/podcastDependencies";
 import type { PodcastDetail } from "@/features/podcasts/domain/PodcastRepository";
+import { DetailSkeleton } from "@/features/podcasts/ui/DetailSkeleton";
 import { EpisodesTable } from "@/features/podcasts/ui/EpisodesTable";
 import { PodcastSidebar } from "@/features/podcasts/ui/PodcastSidebar";
 import styles from "@/features/podcasts/ui/PodcastDetailPage.module.css";
@@ -41,7 +42,9 @@ export function PodcastDetailPage() {
         setDetail(null);
         setError("Could not load this podcast. Check your connection and try again.");
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
       }
     })();
 
@@ -60,24 +63,7 @@ export function PodcastDetailPage() {
 
   return (
     <section className={styles.page}>
-      {loading ? (
-        <>
-          <p className={styles.srOnly}>Loading podcast…</p>
-          <aside className={styles.sidebarSkeleton} aria-hidden="true">
-            <span className={styles.skeletonCover} />
-            <span className={styles.skeletonLine} />
-            <span className={styles.skeletonLineShort} />
-            <span className={styles.skeletonBlock} />
-          </aside>
-          <section className={styles.contentSkeleton} aria-hidden="true">
-            <span className={styles.skeletonHeader} />
-            <span className={styles.skeletonRow} />
-            <span className={styles.skeletonRow} />
-            <span className={styles.skeletonRow} />
-            <span className={styles.skeletonRow} />
-          </section>
-        </>
-      ) : null}
+      {loading ? <DetailSkeleton label="Loading podcast…" /> : null}
 
       {!loading && error ? (
         <div className={styles.errorBanner} role="alert">

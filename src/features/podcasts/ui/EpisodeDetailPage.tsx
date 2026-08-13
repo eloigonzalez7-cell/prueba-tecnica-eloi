@@ -4,6 +4,7 @@ import { useSyncAppLoading } from "@/app/loading/AppLoadingContext";
 import { getPodcastDetail } from "@/app/podcastDependencies";
 import type { Episode } from "@/features/podcasts/domain/Episode";
 import type { PodcastDetail } from "@/features/podcasts/domain/PodcastRepository";
+import { DetailSkeleton } from "@/features/podcasts/ui/DetailSkeleton";
 import { PodcastSidebar } from "@/features/podcasts/ui/PodcastSidebar";
 import { sanitizeHtml } from "@/shared/html/sanitizeHtml";
 import layoutStyles from "@/features/podcasts/ui/PodcastDetailPage.module.css";
@@ -46,7 +47,9 @@ export function EpisodeDetailPage() {
         setDetail(null);
         setError("Could not load this episode. Check your connection and try again.");
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
       }
     })();
 
@@ -67,22 +70,7 @@ export function EpisodeDetailPage() {
 
   return (
     <section className={layoutStyles.page}>
-      {loading ? (
-        <>
-          <p className={layoutStyles.srOnly}>Loading episode…</p>
-          <aside className={layoutStyles.sidebarSkeleton} aria-hidden="true">
-            <span className={layoutStyles.skeletonCover} />
-            <span className={layoutStyles.skeletonLine} />
-            <span className={layoutStyles.skeletonLineShort} />
-            <span className={layoutStyles.skeletonBlock} />
-          </aside>
-          <section className={layoutStyles.contentSkeleton} aria-hidden="true">
-            <span className={layoutStyles.skeletonHeader} />
-            <span className={layoutStyles.skeletonBlock} />
-            <span className={layoutStyles.skeletonRow} />
-          </section>
-        </>
-      ) : null}
+      {loading ? <DetailSkeleton label="Loading episode…" /> : null}
 
       {!loading && error ? (
         <div className={layoutStyles.errorBanner} role="alert">
