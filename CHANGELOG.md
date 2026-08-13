@@ -3,6 +3,11 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [1.2.5] - 2026-08-13
+
+### Bug Fixes
+
+- **podcasts:** keep detail skeleton until load settles
 ## [1.2.4] - 2026-08-13
 
 ### Testing
