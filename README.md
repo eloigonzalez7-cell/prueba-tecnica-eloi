@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml/badge.svg)](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml)
 
-**Current release:** [`v1.3.0`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.3.0) — see [CHANGELOG.md](CHANGELOG.md).
+**Current release:** [`v1.3.1`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.3.1) — see [CHANGELOG.md](CHANGELOG.md).
 
 Single-page application to browse Apple’s top music podcasts, open podcast details, and play episodes. Built for the **Inditex frontend technical challenge**.
 
@@ -68,7 +68,7 @@ Specs use custom commands (`cy.stubItunesApis`) and fixtures under `cypress/fixt
 
 ## Features
 
-- **Home** `/` — top 100 podcasts, live filter by title/author, count badge, page size 10/25/50/100 + pager (application-layer `PagedResult` over the cached list), 24h `localStorage` cache
+- **Home** `/` — top 100 podcasts, live filter by title/author, count badge, page size 10/25/50/100 + pager (application-layer `PagedResult` over the cached list), windowed grid (viewport + overscan), 24h `localStorage` cache
 - **Podcast** `/podcast/:podcastId` — sidebar + episodes table, 24h cache; empty lookup description enriched from top-feed summary (enriched snapshot written back to cache); sidebar description sanitized + bare URLs linkified (same as episodes); skeleton until lookup settles (no premature “Podcast not found”)
 - **Episode** `/podcast/:podcastId/episode/:episodeId` — DOMPurify-sanitized HTML, bare `https://` / `domain/path` URLs linkified, newlines preserved, plus `<audio controls>` (lookup `limit=20` matches the brief sample URL)
 - **Chrome** — “Podcaster” header link → home; top-right loading spinner while fetching

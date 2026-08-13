@@ -27,9 +27,9 @@ Delivery style: **micro-PRs** mapped to steps `S00`–`S41`.
 | E9 | Delivery docs (README, ADRs, traceability) | S36–S37 | Done (`v1.0.0`; milestones through `v1.2.2`) |
 | E10 | GFT review: reliable Cypress e2e | S38 | Done (`v1.2.4`) |
 | E11 | GFT review: detail loading until data settles | S39 | Done (`v1.2.5`) |
-| E12 | GFT review NTH: paginated + virtualized home list | S40–S41 | In progress (`v1.3.0` pagination; `v1.3.1` virtualization) |
+| E12 | GFT review NTH: paginated + virtualized home list | S40–S41 | Done (`v1.3.0` / `v1.3.1`) |
 
-Current delivery tag: **`v1.3.0`** (application-layer pagination). Next: `v1.3.1` (virtualized grid).
+Current delivery tag: **`v1.3.1`** (GFT review line complete: e2e, detail loading, pagination, virtualization).
 
 ## GFT technical review (2026-08)
 

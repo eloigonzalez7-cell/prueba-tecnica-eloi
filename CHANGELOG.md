@@ -3,6 +3,11 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [1.3.1] - 2026-08-13
+
+### Features
+
+- **podcasts:** virtualize home podcast grid
 ## [1.3.0] - 2026-08-13
 
 ### Features
