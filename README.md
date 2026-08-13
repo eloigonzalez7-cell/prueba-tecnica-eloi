@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml/badge.svg)](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/actions/workflows/ci.yml)
 
-**Current release:** [`v1.3.1`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.3.1) — see [CHANGELOG.md](CHANGELOG.md).
+**Current release:** [`v1.3.2`](https://github.com/eloigonzalez7-cell/prueba-tecnica-eloi/releases/tag/v1.3.2) — see [CHANGELOG.md](CHANGELOG.md).
 
 Single-page application to browse Apple’s top music podcasts, open podcast details, and play episodes. Built for the **Inditex frontend technical challenge**.
 
@@ -130,7 +130,7 @@ Rules of thumb:
 
 ## Milestone tags
 
-`v0.0.0-init` → `v0.1.0-foundation` → `v0.2.0-domain` → `v0.2.1-data` → `v0.3.0-home` → `v0.4.0-detail` → `v0.5.0-episode` → `v0.6.0-chrome` → `v0.7.0-tests` → `v1.0.0` → `v1.1.0` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` (GFT review backlog) → `v1.2.4` (e2e) → `v1.2.5` (detail loading) → `v1.3.0` (pagination) → `v1.3.1` (virtualization)
+`v0.0.0-init` → `v0.1.0-foundation` → `v0.2.0-domain` → `v0.2.1-data` → `v0.3.0-home` → `v0.4.0-detail` → `v0.5.0-episode` → `v0.6.0-chrome` → `v0.7.0-tests` → `v1.0.0` → `v1.1.0` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` (GFT review backlog) → `v1.2.4` (e2e) → `v1.2.5` (detail loading) → `v1.3.0` (pagination) → `v1.3.1` (virtualization) → `v1.3.2` (hardening)
 
 ### SemVer (MAJOR.MINOR.PATCH)
 
@@ -138,7 +138,7 @@ Rules of thumb:
 |------|---------|----------------------|
 | **MAJOR** `X.0.0` | Breaking / delivery baseline | `v1.0.0` |
 | **MINOR** `x.Y.0` | New capability, backwards compatible | `v1.2.0` (Cypress suite + linkify), `v1.3.0` (pagination), `v1.3.1` (virtualization) |
-| **PATCH** `x.y.Z` | Small fix or hardening (tests, docs polish) | `v1.2.2` (podcast description linkify), `v1.2.3` (GFT review docs), `v1.2.4` (e2e), `v1.2.5` (detail loading) |
+| **PATCH** `x.y.Z` | Small fix or hardening (tests, docs polish) | `v1.2.5` (detail loading), `v1.3.2` (lint + pagination e2e + npm version) |
 
 ### Release checklist
 
