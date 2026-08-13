@@ -3,6 +3,11 @@
 All notable changes to Podcaster are documented here.
 Generated from Conventional Commits and git tags via [git-cliff](https://git-cliff.org).
 
+## [1.3.2] - 2026-08-13
+
+### Bug Fixes
+
+- harden virtualizer lint, pagination e2e, and package version
 ## [1.3.1] - 2026-08-13
 
 ### Features

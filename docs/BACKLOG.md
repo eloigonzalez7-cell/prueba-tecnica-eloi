@@ -29,7 +29,7 @@ Delivery style: **micro-PRs** mapped to steps `S00`–`S41`.
 | E11 | GFT review: detail loading until data settles | S39 | Done (`v1.2.5`) |
 | E12 | GFT review NTH: paginated + virtualized home list | S40–S41 | Done (`v1.3.0` / `v1.3.1`) |
 
-Current delivery tag: **`v1.3.1`** (GFT review line complete: e2e, detail loading, pagination, virtualization).
+Current delivery tag: **`v1.3.2`** (GFT review line + hardening: lint, pagination e2e, npm version).
 
 ## GFT technical review (2026-08)
 
