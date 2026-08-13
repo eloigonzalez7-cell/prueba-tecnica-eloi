@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useSyncAppLoading } from "@/app/loading/AppLoadingContext";
 import {
   filterPodcasts,
@@ -7,6 +6,7 @@ import {
   paginatePodcasts,
 } from "@/app/podcastDependencies";
 import type { Podcast } from "@/features/podcasts/domain/Podcast";
+import { VirtualizedPodcastGrid } from "@/features/podcasts/ui/VirtualizedPodcastGrid";
 import styles from "@/features/podcasts/ui/HomePage.module.css";
 
 const PAGE_SIZES = [10, 25, 50, 100] as const;
@@ -132,38 +132,7 @@ export function HomePage() {
 
       {!loading && !error ? (
         <>
-          <ul className={styles.grid}>
-            {paged.items.map((podcast) => (
-              <li key={podcast.id}>
-                <Link
-                  className={styles.card}
-                  to={`/podcast/${podcast.id}`}
-                  aria-label={`${podcast.title} by ${podcast.author}`}
-                >
-                  <img
-                    className={styles.cover}
-                    src={podcast.images.medium || podcast.images.large}
-                    srcSet={[
-                      podcast.images.small ? `${podcast.images.small} 60w` : "",
-                      podcast.images.medium
-                        ? `${podcast.images.medium} 170w`
-                        : "",
-                      podcast.images.large ? `${podcast.images.large} 600w` : "",
-                    ]
-                      .filter(Boolean)
-                      .join(", ")}
-                    sizes="100px"
-                    alt=""
-                    loading="lazy"
-                    width={100}
-                    height={100}
-                  />
-                  <h2 className={styles.title}>{podcast.title}</h2>
-                  <p className={styles.author}>{podcast.author}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <VirtualizedPodcastGrid podcasts={paged.items} />
 
           <nav className={styles.pager} aria-label="Podcast list pages">
             <button
